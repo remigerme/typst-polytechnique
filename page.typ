@@ -37,7 +37,7 @@
   set page(header: { 
     grid(columns: (1fr, 1fr),
       align(horizon, smallcaps(text(fill: rgb("01426A"), size: 14pt, font: "New Computer Modern", weight: "regular")[#short-title])),
-      align(right, image("assets/logo-x-ip-paris.svg", height: 20mm)))
+      align(right, image("assets/better-x-logo.png", height: 20mm)))
   }, numbering: "1 / 1")
   counter(page).update(1)
 

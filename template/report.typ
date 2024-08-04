@@ -1,8 +1,8 @@
-#import "@preview/typographix-polytechnique-reports:0.1.2" as template
+#import "@preview/typographix-polytechnique-reports:0.2.0" as template
 
 // Defining variables for the cover page and PDF metadata
 // Main title on cover page
-#let title = [Rapport de stage en entreprise
+#let title = [Rapport de stage en labo de recherche
 #linebreak()
 sur plusieurs lignes]
 // Subtitle on cover page

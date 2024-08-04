@@ -44,7 +44,7 @@
 /* MAIN COVER DEFINITION */
 
 #let cover(title, author, date-start, date-end, subtitle: none, short-month: false) = {
-  set page(background: move(dx: 0pt, dy: -13%, image("assets/armes.svg")))
+  set page(background: move(dx: 0pt, dy: -13%, image("assets/better-x.png")))
   set text(font: "New Computer Modern Sans", hyphenate: false, fill: rgb(1, 66, 106))
   set align(center)
 
@@ -76,7 +76,7 @@
     columns: (1fr, 1fr),
     // image("assets/typst.png", height: 20mm),
     [Placeholder],
-    image("assets/logo-x-ip-paris.svg", height: 20mm)
+    image("assets/better-x-logo.png", height: 20mm)
   )
 
 }

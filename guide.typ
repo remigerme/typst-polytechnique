@@ -1,4 +1,4 @@
-#import "@preview/typographix-polytechnique-reports:0.1.2" as template
+#import "@preview/typographix-polytechnique-reports:0.2.0" as template
 
 #show:  template.apply
 
@@ -6,10 +6,10 @@
 #show link: set text(blue)
 
 // Defining variables for the cover page and PDF metadata
-#let title = [guide for typst #linebreak() polytechnique package]
+#let title = [guide for typst #linebreak() polytechnique v2 package]
 #let subtitle = "A modern alternative to LaTeX"
 #let short_title = "package guide"
-#let authors = ("Rémi Germe")
+#let authors = ("Not a polytechnicien")
 #let date_start = datetime(year: 2024, month: 07, day: 05)
 #let date_end = datetime(year: 2024, month: 08, day: 05)
 
