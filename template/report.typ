@@ -18,6 +18,9 @@ sur plusieurs lignes]
 // Set to true for bigger margins and so on (good luck with your report)
 #let despair-mode = false
 
+// Set to true true if you want ugly "traits d'union" in your text
+#set text(hyphenate: false)
+
 #set text(lang: "fr")
 
 // Set document metadata
