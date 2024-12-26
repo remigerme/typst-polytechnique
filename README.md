@@ -2,7 +2,7 @@
 
 A Typst package for Polytechnique student reports.
 
-For a short introduction to Typst features and detailled information about the package, check the  [guide](https://github.com/remigerme/typst-polytechnique/blob/main/guide.pdf) (available from the repo only).
+For a short introduction to Typst features and detailled information about the package, check the [guide](https://github.com/remigerme/typst-polytechnique/blob/main/guide.pdf) (available from the repo only).
 
 ## Usage
 
@@ -33,7 +33,3 @@ Contributions are welcomed ! See [contribution guidelines](CONTRIBUTING.md).
 ## Todo
 
 - [ ] heading not at the end of a page : might be tricky
-- [x] first line indent
-- [ ] better spacing between elements
-- [x] handle logos on cover page
-- [x] ~~handle logos on header~~ : feature canceled

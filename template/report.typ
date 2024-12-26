@@ -1,4 +1,4 @@
-#import "@preview/typographix-polytechnique-reports:0.1.5" as template
+#import "@preview/typographix-polytechnique-reports:0.1.6" as template
 
 // Defining variables for the cover page and PDF metadata
 // Main title on cover page
@@ -98,3 +98,9 @@ Parce qu'on a beaucoup de choses à dire et qu'on en a gros.
 // Bibliography (if necessary)
 // #pagebreak()
 // #bibliography("path-to-file.bib")
+
+// Annexe
+#pagebreak()
+#show: template.heading.appendix.with(title: "Annexe")
+= Fiche d'évaluation du stagiaire
+Yeah j'ai eu que des A partout trop bien, je suis un.e super stagiaire.
