@@ -18,8 +18,11 @@
         font: "New Computer Modern Sans",
         hyphenate: false
       )
-      if he.numbering != none {
+      if type(he.numbering) == str {
         counter(heading).display(he.numbering.slice(0, -3))
+        linebreak()
+      } else if he.numbering != none {
+        upper((he.numbering)(he.level).slice(0, -2))
         linebreak()
       }
       upper(he.body)
@@ -49,10 +52,11 @@
       weight: "regular",
       fill: rgb("01426A")
     )
-    if he.numbering != none {
+    if type(he.numbering) == str {
       counter(heading).display(he.numbering.slice(0, -3))
       [ • ]
     }
+
     smallcaps(he.body)
   }
 
@@ -72,6 +76,24 @@
   // Don't forget to return doc cause
   // we're in a template
   doc
+}
+
+#let appendix(body, title: "Appendix") = {
+  counter(heading).update(0)
+  // From https://github.com/typst/typst/discussions/3630
+  set heading(
+    numbering: (..nums) => {
+      let vals = nums.pos()
+      let s = ""
+      if vals.len() == 1 {
+        s += title + " "
+      }
+      s += numbering("A.1 -", ..vals)
+      s
+    },
+  )
+
+  body
 }
 
 
@@ -110,3 +132,13 @@ really ?
 #lorem(30)
 
 == Another one
+
+#lorem(20)
+
+#show: appendix.with(title: "Appendix")
+
+= Some proofs
+#lorem(50)
+
+== Some theorem
+#lorem(20)
