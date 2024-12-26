@@ -1,4 +1,4 @@
-#import "@preview/typographix-polytechnique-reports:0.1.4" as template
+#import "@preview/typographix-polytechnique-reports:0.1.6" as template
 
 #show:  template.apply
 
@@ -151,3 +151,8 @@ You can also learn more about #link("https://github.com/typst/packages")[Typst p
 #pagebreak()
 
 #bibliography("assets/example.bib")
+
+#pagebreak()
+#show: template.heading.appendix.with(title: "Appendix")
+= Some details about something
+You can also use appendix if needed.
