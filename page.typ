@@ -36,8 +36,8 @@
 #let apply-header-footer(doc, short-title: none) = {
   set page(header: { 
     grid(columns: (1fr, 1fr),
-      align(horizon, smallcaps(text(fill: rgb("01426A"), size: 14pt, font: "New Computer Modern", weight: "regular")[#short-title])),
-      align(right, image("assets/logo-x-ip-paris.svg", height: 20mm)))
+      align(horizon, smallcaps(text(fill: rgb(0, 93, 166), size: 14pt, font: "New Computer Modern", weight: "regular")[#short-title])),
+      align(right, image("assets/Monash_University_logo_page.svg", height: 13mm)))
   }, numbering: "1 / 1")
   counter(page).update(1)
 

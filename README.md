@@ -1,8 +1,18 @@
-# Typst Polytechnique package
+# Typst Report Template - Monash University Edition
 
-A Typst package for Polytechnique student reports.
+A Typst package for Monash University student reports, adapted from the Polytechnique template with Monash's official brand colors.
 
-For a short introduction to Typst features and detailled information about the package, check the [guide](https://github.com/remigerme/typst-polytechnique/blob/main/guide.pdf) (available from the repo only).
+For a short introduction to Typst features and detailed information about the package, check the [guide](https://github.com/remigerme/typst-polytechnique/blob/main/guide.pdf) (available from the repo only).
+
+## Monash Color Scheme
+
+This template uses Monash University's official brand colors:
+- **Monash Blue** (#005DA6) - Primary brand color for main headings and cover text
+- **Bright Blue** (#0066CC) - Secondary color for H2 headings
+- **Monash Navy** (#00539C) - Medium contrast for H3 headings
+- **Monash Yellow** (#FFD100) - Available as accent color
+
+See `monash-colors.typ` for complete color definitions and usage guidelines.
 
 ## Usage
 

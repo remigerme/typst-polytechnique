@@ -44,8 +44,8 @@
 /* MAIN COVER DEFINITION */
 
 #let cover(title, author, date-start, date-end, subtitle: none, logo: none, short-month: false, logo-horizontal: true) = {
-  set page(background: move(dx: 0pt, dy: -13%, image("assets/armes.svg")))
-  set text(font: "New Computer Modern Sans", hyphenate: false, fill: rgb(1, 66, 106))
+  set page(background: move(dx: 0pt, dy: -35%, image("assets/Monash University-04.svg", width: 45%)))
+  set text(font: "New Computer Modern Sans", hyphenate: false, fill: rgb(0, 93, 166))
   set align(center)
 
   v(1.8fr)
@@ -73,7 +73,7 @@
   v(1fr)
 
   let logo-height = if (logo-horizontal) { 20mm } else { 30mm }
-  let path-logo-x = if (logo-horizontal) { "assets/logo-x-ip-paris.svg" } else { "assets/logo-x.svg" }
+  let path-logo-x = if (logo-horizontal) { "assets/Monash_University_logo_page.svg" } else { "assets/monash-university-logo-cover.svg" }
 
   set image(height: logo-height)
 

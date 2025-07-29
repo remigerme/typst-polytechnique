@@ -14,7 +14,7 @@
       set text(
         size: 20pt,
         weight: "black",
-        fill: rgb("CE0037"),
+        fill: rgb(0, 93, 166),
         font: "New Computer Modern Sans",
         hyphenate: false
       )
@@ -37,7 +37,7 @@
       set text(
         size:20pt,
         weight: "medium",
-        fill: rgb("00677F"),
+        fill: rgb(0, 102, 204),
       )
       smallcaps(he)
       v(-0.5em)
@@ -50,7 +50,7 @@
     set text(
       size: 16pt,
       weight: "regular",
-      fill: rgb("01426A")
+      fill: rgb(0, 83, 156)
     )
     if type(he.numbering) == str {
       counter(heading).display(he.numbering.slice(0, -3))
