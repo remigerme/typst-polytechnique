@@ -16,7 +16,6 @@ next line]
 #let short-title = "Report Title"
 #let author = "Author Name"
 #let date-start = datetime(year: 2025, month: 07, day: 30)
-#let date-end = datetime(year: 2025, month: 08, day: 31)
 // Set to true for bigger margins and so on (good luck with your report)
 #let despair-mode = false
 
@@ -28,11 +27,11 @@ next line]
 #show: apply-heading
 
 // Cover page
-#cover(title, author, date-start, date-end, subtitle: subtitle, logo: logo, logo-horizontal: logo-horizontal)
+#cover(title, author, date-start, subtitle: subtitle, logo: logo, logo-horizontal: logo-horizontal)
 #pagebreak()
 
 // Acknowledgements
-#heading(level: 1, numbering: none, outlined: false)[Remerciements]
+#heading(level: 1, numbering: none, outlined: false)[Acknowledgements]
 #lorem(250)
 #pagebreak()
 

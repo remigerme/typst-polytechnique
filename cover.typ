@@ -43,7 +43,7 @@
 
 /* MAIN COVER DEFINITION */
 
-#let cover(title, author, date-start, date-end, subtitle: none, logo: none, short-month: false, logo-horizontal: true) = {
+#let cover(title, author, date-start, subtitle: none, logo: none, short-month: false, logo-horizontal: true) = {
   set page(background: move(dx: 0pt, dy: -35%, image("assets/Monash University-04.svg", width: 45%)))
   set text(font: "New Computer Modern Sans", hyphenate: false, fill: rgb(0, 93, 166))
   set align(center)
@@ -63,7 +63,7 @@
   v(1.5fr)
   
   set text(size: 18pt, weight: "regular")
-  display-date(date-start, short-month); [ \- ]; display-date(date-end, short-month)
+  display-date(date-start, short-month)//; [ \- ]; display-date(date-end, short-month)
 
   image("assets/filet-court.svg")
 
@@ -101,7 +101,6 @@
 #cover(
   [A very long title over multiple lines automatically],
   "Jane Doe",
-  datetime.today(),
   datetime.today(),
   subtitle: "Je n'ai pas de stage mais je suis détendu",
   logo-horizontal: true,
