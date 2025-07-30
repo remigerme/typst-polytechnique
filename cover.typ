@@ -71,7 +71,7 @@
           set text(size: 8pt, fill: rgb(150, 150, 150))
           image("assets/typst.png", height: 10pt)
           h(2pt)
-          text("Made with Typst")
+          link("https://typst.app", "Made with Typst")
         }
       )
     }
