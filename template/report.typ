@@ -23,6 +23,8 @@ Rest of the Title] // Use a list to allow line breaks
 #let word-count = none // Optional word count
 // Set to true for bigger margins and so on (good luck with your report)
 #let despair-mode = false
+// Set to false to hide "Made with Typst" attribution on cover page
+#let show-typst-attribution = true
 
 #set text(lang: "en")
 
@@ -46,7 +48,8 @@ Rest of the Title] // Use a list to allow line breaks
   assignment-type: assignment-type,
   tutor-name: tutor-name,
   word-count: word-count,
-  date: date
+  date: date,
+  show-typst-attribution: show-typst-attribution
 )
 #pagebreak()
 

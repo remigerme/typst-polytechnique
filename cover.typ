@@ -44,7 +44,7 @@
 
 /* MAIN COVER DEFINITION */
 
-#let cover(title, author, date-start, date-end, subtitle: none, logo: none, short-month: false, logo-horizontal: true, student-id: none, course-code: none, course-name: none, assignment-type: "Assignment", tutor-name: none, word-count: none, date: none) = {
+#let cover(title, author, date-start, date-end, subtitle: none, logo: none, short-month: false, logo-horizontal: true, student-id: none, course-code: none, course-name: none, assignment-type: "Assignment", tutor-name: none, word-count: none, date: none, show-typst-attribution: true) = {
   // Modern gradient background
   set page(background: {
     // Subtle gradient background
@@ -62,17 +62,19 @@
       image("assets/Monash University-04.svg", width: 35%)
     )
     
-    // Typst logo in bottom right corner
-    place(
-      bottom + right,
-      dx: -20pt, dy: -20pt,
-      {
-        set text(size: 8pt, fill: rgb(150, 150, 150))
-        image("assets/typst.png", height: 10pt)
-        h(2pt)
-        text("Made with Typst")
-      }
-    )
+    // Typst logo in bottom right corner (conditional)
+    if show-typst-attribution {
+      place(
+        bottom + right,
+        dx: -20pt, dy: -20pt,
+        {
+          set text(size: 8pt, fill: rgb(150, 150, 150))
+          image("assets/typst.png", height: 10pt)
+          h(2pt)
+          text("Made with Typst")
+        }
+      )
+    }
   })
   
   set text(hyphenate: false)
