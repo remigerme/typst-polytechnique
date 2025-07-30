@@ -27,7 +27,7 @@ next line]
 #show: apply-heading
 
 // Cover page
-#cover(title, author, date-start, subtitle: subtitle, logo: logo, logo-horizontal: logo-horizontal)
+#cover(title, author, date-start, date-start, subtitle: subtitle, logo: logo, logo-horizontal: logo-horizontal)
 #pagebreak()
 
 // Acknowledgements
@@ -53,7 +53,7 @@ next line]
 
 // Here goes the main content
 = First Part
-
+This is the 
 == A Subtitle
 
 #lorem(30)

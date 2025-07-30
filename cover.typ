@@ -43,52 +43,80 @@
 
 /* MAIN COVER DEFINITION */
 
-#let cover(title, author, date-start, subtitle: none, logo: none, short-month: false, logo-horizontal: true) = {
-  set page(background: move(dx: 0pt, dy: -35%, image("assets/Monash University-04.svg", width: 45%)))
-  set text(font: "New Computer Modern Sans", hyphenate: false, fill: rgb(0, 93, 166))
+#let cover(title, author, date-start, date-end, subtitle: none, logo: none, short-month: false, logo-horizontal: true) = {
+  // Modern gradient background
+  set page(background: {
+    // Subtle gradient background
+    let gradient = gradient.linear(
+      rgb(245, 250, 255),
+      rgb(230, 242, 255),
+      angle: 135deg
+    )
+    rect(width: 100%, height: 100%, fill: gradient)
+    
+    // Monash logo as subtle watermark
+    place(
+      center + horizon,
+      dx: 0pt, dy: -35%,
+      image("assets/Monash University-04.svg", width: 35%)
+    )
+  })
+  
+  set text(font: "New Computer Modern Sans", hyphenate: false)
   set align(center)
 
-  v(1.8fr)
+  v(2fr)
 
-  set text(size: 24pt, weight: "bold")
-  upper(title)
+  // Title with modern styling
+  set text(size: 28pt, weight: "bold", fill: rgb(0, 93, 166))
+  box(width: 85%)[
+    #upper(title)
+  ]
+  
+  // Decorative underline
+  v(0.5em)
+  box(width: 60%, height: 2pt, fill: rgb(0, 102, 204))
 
-  v(1.5fr)
+  v(1.2fr)
 
   if subtitle != none {
-    set text(size: 20pt)
-    subtitle
+    set text(size: 18pt, fill: rgb(0, 83, 156), style: "italic")
+    box(width: 75%)[
+      #subtitle
+    ]
+    v(1fr)
   }
 
-  v(1.5fr)
-  
-  set text(size: 18pt, weight: "regular")
-  display-date(date-start, short-month)//; [ \- ]; display-date(date-end, short-month)
-
-  image("assets/filet-court.svg")
-
-  set text(size: 16pt)
-  smallcaps(author)
+  // Date with modern formatting
+  set text(size: 16pt, fill: rgb(0, 93, 166), weight: "medium")
+  box(width: 50%)[
+    #display-date(date-start, short-month)
+    #if date-end != date-start [
+      \u{2013} #display-date(date-end, short-month)
+    ]
+  ]
 
   v(1fr)
 
-  let logo-height = if (logo-horizontal) { 20mm } else { 30mm }
+  // Author with elegant styling
+  set text(size: 14pt, fill: rgb(0, 83, 156))
+  box(width: 40%)[
+    #smallcaps(author)
+  ]
+
+  v(1.5fr)
+
+  // Modern logo placement
+  let logo-height = if (logo-horizontal) { 15mm } else { 25mm }
   let path-logo-x = if (logo-horizontal) { "assets/Monash_University_logo_page.svg" } else { "assets/monash-university-logo-cover.svg" }
 
   set image(height: logo-height)
+  
+  box(width: 30%)[
+    #image(path-logo-x)
+  ]
 
-  if (logo != none) {
-    grid(
-      columns: (1fr, 1fr), align: center + horizon,
-      logo, image(path-logo-x)
-    )
-  } else {
-    grid(
-      columns: (1fr), align: center + horizon,
-      image(path-logo-x)
-    )
-  }
-
+  v(1fr)
 }
 
 
@@ -101,6 +129,7 @@
 #cover(
   [A very long title over multiple lines automatically],
   "Jane Doe",
+  datetime.today(),
   datetime.today(),
   subtitle: "Je n'ai pas de stage mais je suis détendu",
   logo-horizontal: true,

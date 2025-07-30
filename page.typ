@@ -35,9 +35,15 @@
 // Applying header and footer setup
 #let apply-header-footer(doc, short-title: none) = {
   set page(header: { 
-    grid(columns: (1fr, 1fr),
-      align(horizon, smallcaps(text(fill: rgb(0, 93, 166), size: 14pt, font: "New Computer Modern", weight: "regular")[#short-title])),
-      align(right, image("assets/Monash_University_logo_page.svg", height: 13mm)))
+    grid(columns: (1fr, 1fr), align: center + horizon,
+      align(left, smallcaps(text(
+        fill: rgb(0, 93, 166), 
+        size: 14pt, 
+        font: "New Computer Modern", 
+        weight: "medium"
+      )[#short-title])),
+      align(right, image("assets/Monash_University_logo_page.svg", height: 15mm))
+    )
   }, numbering: "1 / 1")
   counter(page).update(1)
 

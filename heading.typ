@@ -6,58 +6,87 @@
     // Numbering parameters
   set heading(numbering: "1.1 - ")
 
-  // H1 styling
+  // H1 styling - Modern with shadow effect
   show heading.where(level:1): he => {
     set align(center)
-    box(width: 85%)[#{
+    box(width: 90%)[#{
       set par(justify: false)
+      
+      // Number styling
+      if type(he.numbering) == str {
+        set text(
+          size: 16pt,
+          weight: "bold",
+          fill: rgb(0, 102, 204),
+          font: "New Computer Modern Sans"
+        )
+        counter(heading).display(he.numbering.slice(0, -3))
+        v(0.3em)
+      } else if he.numbering != none {
+        set text(
+          size: 16pt,
+          weight: "bold",
+          fill: rgb(0, 102, 204),
+          font: "New Computer Modern Sans"
+        )
+        upper((he.numbering)(he.level).slice(0, -2))
+        v(0.3em)
+      }
+      
+      // Title with modern styling
       set text(
-        size: 20pt,
-        weight: "black",
+        size: 24pt,
+        weight: "bold",
         fill: rgb(0, 93, 166),
         font: "New Computer Modern Sans",
         hyphenate: false
       )
-      if type(he.numbering) == str {
-        counter(heading).display(he.numbering.slice(0, -3))
-        linebreak()
-      } else if he.numbering != none {
-        upper((he.numbering)(he.level).slice(0, -2))
-        linebreak()
-      }
       upper(he.body)
-      image("assets/filet-long.svg", width: 30%)
+      
+      // Modern decorative element
+      v(0.8em)
+      box(width: 40%, height: 1.5pt, fill: rgb(0, 102, 204, 60%))
       v(0.5em)
   }]
   }
 
-  // H2 styling
+  // H2 styling - Professional academic format
   show heading.where(level:2): he => {
-    box()[#{
+    block(below: 0.8em, above: 0.6em)[#{
+      set align(left)
       set text(
-        size:20pt,
-        weight: "medium",
-        fill: rgb(0, 102, 204),
+        size: 18pt,
+        weight: "bold",
+        fill: rgb(0, 93, 166),
+        font: "New Computer Modern Sans"
       )
-      smallcaps(he)
-      v(-0.5em)
-      image("assets/filet-court.svg")
+      if type(he.numbering) == str {
+        counter(heading).display(he.numbering.slice(0, -3))
+        [ ]
+      }
+      he.body
     }]
   }
 
-  // H3 styling
+  // H3 styling - Modern with bullet
   show heading.where(level: 3): he => {
-    set text(
-      size: 16pt,
-      weight: "regular",
-      fill: rgb(0, 83, 156)
-    )
-    if type(he.numbering) == str {
-      counter(heading).display(he.numbering.slice(0, -3))
-      [ • ]
-    }
-
-    smallcaps(he.body)
+    box(width: 100%)[#{
+      grid(columns: (auto, 1fr), column-gutter: 8pt, align: left)[
+        #set text(size: 12pt, fill: rgb(0, 93, 166))
+        #text(weight: "bold")[▸]
+      ][
+        #set text(
+          size: 16pt,
+          weight: "medium",
+          fill: rgb(0, 83, 156)
+        )
+        #if type(he.numbering) == str {
+          counter(heading).display(he.numbering.slice(0, -3))
+          [ • ]
+        }
+        #smallcaps(he.body)
+      ]
+    }]
   }
 
   // H4 styling
