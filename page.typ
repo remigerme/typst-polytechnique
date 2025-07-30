@@ -33,18 +33,31 @@
 }
 
 // Applying header and footer setup
-#let apply-header-footer(doc, short-title: none) = {
-  set page(header: { 
-    grid(columns: (1fr, 1fr), align: center + horizon,
-      align(left, smallcaps(text(
-        fill: rgb(0, 93, 166), 
-        size: 14pt, 
-        font: "New Computer Modern", 
-        weight: "medium"
-      )[#short-title])),
-      align(right, image("assets/Monash_University_logo_page.svg", height: 15mm))
-    )
-  }, numbering: "1 / 1")
+#let apply-header-footer(doc, course-code: none, assignment-type: "Assignment") = {
+  let header-text = if course-code != none and assignment-type != none {
+    course-code + " | " + assignment-type
+  } else if course-code != none {
+    course-code
+  } else if assignment-type != none {
+    assignment-type
+  } else {
+    "Document"
+  }
+  
+  set page(
+    header: { 
+      grid(columns: (1fr, 1fr), align: center + horizon,
+        align(left, smallcaps(text(
+          fill: rgb(0, 93, 166), 
+          size: 14pt, 
+          weight: "medium"
+        )[#header-text])),
+        align(right, image("assets/Monash_University_logo_page.svg", height: 15mm))
+      )
+    },
+    footer: align(right, context text(size: 10pt, counter(page).display("1"))),
+    numbering: none // Custom footer handles numbering
+  )
   counter(page).update(1)
 
   doc

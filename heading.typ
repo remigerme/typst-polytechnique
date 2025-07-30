@@ -52,7 +52,8 @@
 
   // H2 styling - Professional academic format
   show heading.where(level:2): he => {
-    block(below: 0.8em, above: 0.6em)[#{
+    box(width: 100%)[#{
+      set par(justify: false)
       set align(left)
       set text(
         size: 18pt,

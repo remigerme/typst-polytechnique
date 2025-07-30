@@ -4,18 +4,23 @@
 
 // Defining variables for the cover page and PDF metadata
 // Main title on cover page
-#let title = [Report Title
+#let title = [Assignment Title
 #linebreak()
-next line]
+Rest of the Title] // Use a list to allow line breaks
 // Subtitle on cover page
-#let subtitle = "An optional subtitle"
+#let subtitle = "Assignment subtitle or description"
 // Logo on cover page
 #let logo = image("../assets/typst.png") // instead of none set to image("path/to/my-logo.png")
 #let logo-horizontal = true // set to true if the logo is squared or horizontal, set to false if not
-// Short title on headers
-#let short-title = "Report Title"
-#let author = "Author Name"
-#let date-start = datetime(year: 2025, month: 07, day: 30)
+// Header will display course code and assignment type automatically
+#let author = "Student Name"
+#let student-id = "12345678" // Student ID number
+#let course-code = "FIT3080" // Course code
+#let course-name = "Introduction to Artificial Intelligence" // Course name
+#let assignment-type = "Assignment Report" // Type: Assignment, Essay, Report, Project, etc.
+#let tutor-name = "Dr. Smith" // Tutor or lecturer name
+#let date = datetime(year: 2025, month: 07, day: 30) // Optional date
+#let word-count = none // Optional word count
 // Set to true for bigger margins and so on (good luck with your report)
 #let despair-mode = false
 
@@ -27,7 +32,22 @@ next line]
 #show: apply-heading
 
 // Cover page
-#cover(title, author, date-start, date-start, subtitle: subtitle, logo: logo, logo-horizontal: logo-horizontal)
+#cover(
+  title, 
+  author, 
+  none, // date-start (deprecated)
+  none, // date-end (deprecated) 
+  subtitle: subtitle, 
+  logo: logo, 
+  logo-horizontal: logo-horizontal,
+  student-id: student-id,
+  course-code: course-code,
+  course-name: course-name,
+  assignment-type: assignment-type,
+  tutor-name: tutor-name,
+  word-count: word-count,
+  date: date
+)
 #pagebreak()
 
 // Acknowledgements
@@ -44,7 +64,7 @@ next line]
 #outline(title: [Template contents], indent: 1em, depth: 2)
 
 // Defining header and page numbering (will pagebreak)
-#show: apply-header-footer.with(short-title: short-title)
+#show: apply-header-footer.with(course-code: course-code, assignment-type: assignment-type)
 
 // Introduction
 #heading(level: 1, numbering: none)[Introduction]
@@ -55,7 +75,6 @@ next line]
 = First Part
 This is the 
 == A Subtitle
-
 #lorem(30)
 
 === A Detail That Is Not So Useless

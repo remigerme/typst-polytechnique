@@ -29,6 +29,7 @@
     // Getting adapted month string
     let repr = if short-month { "short" } else { "long" }
     let month = date.display("[month repr:" + repr + "]")
+    let day = date.display("[day]")
 
     // Translate if necessary
     if text.lang == "fr" {
@@ -36,14 +37,14 @@
     }
 
   // Returns month and year
-  [#month #str(date.year())]
+  [#day #month #str(date.year())]
   }
 }
 
 
 /* MAIN COVER DEFINITION */
 
-#let cover(title, author, date-start, date-end, subtitle: none, logo: none, short-month: false, logo-horizontal: true) = {
+#let cover(title, author, date-start, date-end, subtitle: none, logo: none, short-month: false, logo-horizontal: true, student-id: none, course-code: none, course-name: none, assignment-type: "Assignment", tutor-name: none, word-count: none, date: none) = {
   // Modern gradient background
   set page(background: {
     // Subtle gradient background
@@ -60,9 +61,21 @@
       dx: 0pt, dy: -35%,
       image("assets/Monash University-04.svg", width: 35%)
     )
+    
+    // Typst logo in bottom right corner
+    place(
+      bottom + right,
+      dx: -20pt, dy: -20pt,
+      {
+        set text(size: 8pt, fill: rgb(150, 150, 150))
+        image("assets/typst.png", height: 10pt)
+        h(2pt)
+        text("Made with Typst")
+      }
+    )
   })
   
-  set text(font: "New Computer Modern Sans", hyphenate: false)
+  set text(hyphenate: false)
   set align(center)
 
   v(2fr)
@@ -77,44 +90,79 @@
   v(0.5em)
   box(width: 60%, height: 2pt, fill: rgb(0, 102, 204))
 
-  v(1.2fr)
+  v(1fr)
+
+  // Assignment type indicator
+  set text(size: 16pt, fill: rgb(0, 93, 166), weight: "bold")
+  box(width: 30%)[
+    #assignment-type
+  ]
+
+  v(0.8fr)
 
   if subtitle != none {
-    set text(size: 18pt, fill: rgb(0, 83, 156), style: "italic")
+    set text(size: 16pt, fill: rgb(0, 83, 156), style: "italic")
     box(width: 75%)[
       #subtitle
     ]
-    v(1fr)
+    v(0.8fr)
   }
 
-  // Date with modern formatting
-  set text(size: 16pt, fill: rgb(0, 93, 166), weight: "medium")
-  box(width: 50%)[
-    #display-date(date-start, short-month)
-    #if date-end != date-start [
-      \u{2013} #display-date(date-end, short-month)
-    ]
-  ]
+  // Student information section
+  box(width: 90%)[#{
+    set text(size: 14pt, fill: rgb(0, 83, 156), weight: "bold")
+    text("Student Information")
+    linebreak()
+    set text(weight: "regular")
+    author
+    if student-id != none {
+      linebreak()
+      text("Student ID: ") + student-id
+    }
+  }]
 
-  v(1fr)
+  v(0.5fr)
 
-  // Author with elegant styling
-  set text(size: 14pt, fill: rgb(0, 83, 156))
-  box(width: 40%)[
-    #smallcaps(author)
-  ]
+  // Course information section
+  box(width: 90%)[#{
+    set text(size: 14pt, fill: rgb(0, 83, 156), weight: "bold")
+    text("Course Information")
+    linebreak()
+    set text(weight: "regular")
+    if course-code != none {
+      course-code
+      linebreak()
+    }
+    if course-name != none {
+      course-name
+    }
+  }]
 
-  v(1.5fr)
+  v(0.5fr)
 
-  // Modern logo placement
-  let logo-height = if (logo-horizontal) { 15mm } else { 25mm }
-  let path-logo-x = if (logo-horizontal) { "assets/Monash_University_logo_page.svg" } else { "assets/monash-university-logo-cover.svg" }
+  // Tutor and word count information
+  box(width: 90%)[#{
+    set text(size: 14pt, fill: rgb(0, 83, 156))
+    if tutor-name != none {
+      set text(weight: "bold")
+      text("Tutor: ") + tutor-name
+      linebreak()
+    }
+    if word-count != none {
+      set text(weight: "bold")
+      text("Word Count: ") + str(word-count)
+    }
+  }]
 
-  set image(height: logo-height)
-  
-  box(width: 30%)[
-    #image(path-logo-x)
-  ]
+  v(0.5fr)
+
+  // Date information
+  if date != none {
+    box(width: 60%)[#{
+      set text(size: 14pt, fill: rgb(0, 93, 166), weight: "medium")
+      text("Date: ") + display-date(date, short-month)
+    }]
+  }
 
   v(1fr)
 }
@@ -129,8 +177,9 @@
 #cover(
   [A very long title over multiple lines automatically],
   "Jane Doe",
-  datetime.today(),
-  datetime.today(),
+  none, // date-start (deprecated)
+  none, // date-end (deprecated)
   subtitle: "Je n'ai pas de stage mais je suis détendu",
   logo-horizontal: true,
+  date: datetime.today(),
 )
