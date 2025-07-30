@@ -55,7 +55,24 @@
         align(right, image("assets/Monash_University_logo_page.svg", height: 15mm))
       )
     },
-    footer: align(right, context text(size: 10pt, counter(page).display("1"))),
+    footer: {
+      place(center, {
+        // Subtle decorative line above page number
+        box(width: 60pt, height: 0.5pt, fill: rgb(0, 93, 166, 30%))
+        v(3pt)
+        
+        // Enhanced page number styling
+        set text(
+          size: 10pt, 
+          weight: "medium", 
+          fill: rgb(0, 93, 166)
+        )
+        context {
+          // Add "Page" prefix for better readability
+          text("Page ") + counter(page).display("1")
+        }
+      })
+    },
     numbering: none // Custom footer handles numbering
   )
   counter(page).update(1)
