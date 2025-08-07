@@ -1,4 +1,4 @@
-#import "monash-colors.typ"
+#import "monash-colors.typ": monash-bright-blue, monash-blue
 
 /***********************/
 /* TEMPLATE DEFINITION */
@@ -44,7 +44,7 @@
       
       // Modern decorative element
       v(0.8em)
-      box(width: 40%, height: 1.5pt, fill: monash-bright-blue.with(a: 60%))
+      box(width: 40%, height: 1.5pt, fill: monash-bright-blue)
       v(0.5em)
   }]
   }
