@@ -1,3 +1,5 @@
+#import "monash-colors.typ": *
+
 /***********************/
 /* TEMPLATE DEFINITION */
 /***********************/
@@ -48,24 +50,24 @@
     header: { 
       grid(columns: (1fr, 1fr), align: center + horizon,
         align(left, smallcaps(text(
-          fill: rgb(0, 93, 166), 
+          fill: monash-blue, 
           size: 14pt, 
           weight: "medium"
-        )[#header-text])),
+        )[#header_text])),
         align(right, image("assets/Monash_University_logo_page.svg", height: 15mm))
       )
     },
     footer: {
       place(center, {
         // Subtle decorative line above page number
-        box(width: 60pt, height: 0.5pt, fill: rgb(0, 93, 166, 30%))
+        box(width: 60pt, height: 0.5pt, fill: monash-blue.with(a: 30%))
         v(3pt)
         
         // Enhanced page number styling
         set text(
           size: 10pt, 
           weight: "medium", 
-          fill: rgb(0, 93, 166)
+          fill: monash-blue
         )
         context {
           // Add "Page" prefix for better readability

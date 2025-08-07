@@ -12,7 +12,7 @@ This template uses Monash University's official brand colors:
 - **Monash Navy** (#00539C) - Medium contrast for H3 headings
 - **Monash Yellow** (#FFD100) - Available as accent color
 
-See `monash-colors.typ` for complete color definitions and usage guidelines.
+See `monash-colors.typ` for complete color definitions and modern styling functions.
 
 ## Usage
 
@@ -48,6 +48,8 @@ Contributions are welcome! See [contribution guidelines](CONTRIBUTING.md).
 - Responsive typography and layout
 - Support for student information, course details, and assignment metadata
 - Optional "Made with Typst" attribution toggle
+- Modern styling functions for quotes, code blocks, tables, and figures
+- Centralized color management with Monash brand colors
 
 ## Usage
 

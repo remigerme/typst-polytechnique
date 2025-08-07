@@ -1,3 +1,5 @@
+#import "monash-colors.typ"
+
 /***********************/
 /* TEMPLATE DEFINITION */
 /***********************/
@@ -17,7 +19,7 @@
         set text(
           size: 16pt,
           weight: "bold",
-          fill: rgb(0, 102, 204),
+          fill: monash-bright-blue,
                   )
         counter(heading).display(he.numbering)
         v(0.3em)
@@ -25,7 +27,7 @@
         set text(
           size: 16pt,
           weight: "bold",
-          fill: rgb(0, 102, 204),
+          fill: monash-bright-blue,
                   )
         upper((he.numbering)(he.level))
         v(0.3em)
@@ -35,14 +37,14 @@
       set text(
         size: 24pt,
         weight: "bold",
-        fill: rgb(0, 93, 166),
+        fill: monash-blue,
                 hyphenate: false
       )
       upper(he.body)
       
       // Modern decorative element
       v(0.8em)
-      box(width: 40%, height: 1.5pt, fill: rgb(0, 102, 204, 60%))
+      box(width: 40%, height: 1.5pt, fill: monash-bright-blue.with(a: 60%))
       v(0.5em)
   }]
   }
@@ -55,7 +57,7 @@
       set text(
         size: 18pt,
         weight: "bold",
-        fill: rgb(0, 93, 166),
+        fill: monash-blue,
               )
       if type(he.numbering) == str {
         counter(heading).display(he.numbering)
@@ -73,7 +75,7 @@
       set text(
         size: 16pt,
         weight: "bold",
-        fill: rgb(0, 93, 166),
+        fill: monash-blue,
       )
       if type(he.numbering) == str {
         counter(heading).display(he.numbering)

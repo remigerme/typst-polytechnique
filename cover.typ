@@ -1,3 +1,5 @@
+#import "monash-colors.typ": *
+
 /***********************/
 /* TEMPLATE DEFINITION */
 /***********************/
@@ -83,19 +85,19 @@
   v(2fr)
 
   // Title with modern styling
-  set text(size: 28pt, weight: "bold", fill: rgb(0, 93, 166))
+  set text(size: 28pt, weight: "bold", fill: monash-blue)
   box(width: 85%)[
     #upper(title)
   ]
   
   // Decorative underline
   v(0.5em)
-  box(width: 60%, height: 2pt, fill: rgb(0, 102, 204))
+  box(width: 60%, height: 2pt, fill: monash-bright-blue)
 
   v(1fr)
 
   // Assignment type indicator
-  set text(size: 16pt, fill: rgb(0, 93, 166), weight: "bold")
+  set text(size: 16pt, fill: monash-blue, weight: "bold")
   box(width: 30%)[
     #assignment-type
   ]
@@ -103,7 +105,7 @@
   v(0.8fr)
 
   if subtitle != none {
-    set text(size: 16pt, fill: rgb(0, 83, 156), style: "italic")
+    set text(size: 16pt, fill: monash-navy, style: "italic")
     box(width: 75%)[
       #subtitle
     ]
@@ -112,7 +114,7 @@
 
   // Student information section
   box(width: 90%)[#{
-    set text(size: 14pt, fill: rgb(0, 83, 156), weight: "bold")
+    set text(size: 14pt, fill: monash-navy, weight: "bold")
     text("Student Information")
     linebreak()
     set text(weight: "regular")
@@ -127,7 +129,7 @@
 
   // Course information section
   box(width: 90%)[#{
-    set text(size: 14pt, fill: rgb(0, 83, 156), weight: "bold")
+    set text(size: 14pt, fill: monash-navy, weight: "bold")
     text("Course Information")
     linebreak()
     set text(weight: "regular")
@@ -144,7 +146,7 @@
 
   // Tutor and word count information
   box(width: 90%)[#{
-    set text(size: 14pt, fill: rgb(0, 83, 156))
+    set text(size: 14pt, fill: monash-navy)
     if tutor-name != none {
       set text(weight: "bold")
       text("Tutor: ") + tutor-name
@@ -161,27 +163,10 @@
   // Date information
   if date != none {
     box(width: 60%)[#{
-      set text(size: 14pt, fill: rgb(0, 93, 166), weight: "medium")
+      set text(size: 14pt, fill: monash-blue, weight: "medium")
       text("Date: ") + display-date(date, short-month)
     }]
   }
 
   v(1fr)
 }
-
-
-/********************/
-/* TESTING TEMPLATE */
-/********************/
-
-#set text(lang: "fr")
-
-#cover(
-  [A very long title over multiple lines automatically],
-  "Jane Doe",
-  none, // date-start (deprecated)
-  none, // date-end (deprecated)
-  subtitle: "Je n'ai pas de stage mais je suis détendu",
-  logo-horizontal: true,
-  date: datetime.today(),
-)

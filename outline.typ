@@ -18,24 +18,3 @@
   // we're in a template
   doc
 }
-
-
-/********************/
-/* TESTING TEMPLATE */
-/********************/
-
-#show: apply
-
-#set heading(numbering: "1.1")
-
-#outline()
-
-= My first section
-
-== A sub-section 
-
-#heading(level: 2, numbering: none)[Sub-section without numbering]
-
-== Another sub-section
-
-= Last one
