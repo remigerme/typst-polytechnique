@@ -10,6 +10,7 @@ A professional Typst package for Monash University student reports, featuring Mo
 - **Responsive Typography**: Professional formatting with Monash brand colors
 - **Header & Footer**: Automatic page headers with course info and Monash logo
 - **Modern Styling**: Enhanced functions for quotes, code blocks, tables, and figures
+- **Theorem Environments**: Professional theorem, lemma, and proof environments using thmbox package
 - **Multiple Document Types**: Support for assignments, theses, and research papers
 - **Typst Attribution**: Optional "Made with Typst" badge
 
@@ -70,6 +71,30 @@ This template uses Monash University's official brand colors:
 - `show-typst-attribution` - Show "Made with Typst" badge (default: true)
 
 ## Advanced Features
+
+### Theorem Environments
+
+The template includes theorem environments powered by the `thmbox` package:
+
+```typ
+// Basic theorem
+#thmbox[
+  Let $f: R -> R$ be a continuous function on the closed interval $[a, b]$. 
+  Then $f$ attains its maximum and minimum values on $[a, b]$.
+]
+
+// Proof environment
+#proof[
+  Since $f$ is continuous on the closed and bounded interval $[a, b]$, 
+  by the extreme value theorem, $f$ must attain both its maximum and 
+  minimum values on this interval.
+]
+
+// Lemma
+#thmbox(title: "Lemma")[
+  If a function $f$ is differentiable at a point $c$, then $f$ is continuous at $c$.
+]
+```
 
 ### Modern Styling Functions
 

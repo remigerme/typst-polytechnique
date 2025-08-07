@@ -1,12 +1,12 @@
 [package]
 name = "monash-university-report"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Eric <@eric>"]
 license = "MIT"
-description = "A professional report template for Monash University students with official brand colors."
+description = "A professional report template for Monash University students with official brand colors and theorem environments."
 repository = "https://github.com/eric/typst-report-monash"
-keywords = ["monash", "university", "report", "assignment", "education"]
-categories = ["report", "presentation"]
+keywords = ["monash", "university", "report", "assignment", "education", "theorem", "mathematics"]
+categories = ["report", "presentation", "mathematics"]
 compiler = "0.12.0"
 exclude = [
     ".gitignore",
