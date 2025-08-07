@@ -1,12 +1,12 @@
 #import "../cover.typ": cover
-#import "../heading.typ": apply as apply-heading, appendix
+#import "../heading.typ": apply as apply-heading
 #import "../page.typ": apply as apply-page, apply-header-footer
 
 // Defining variables for the cover page and PDF metadata
 // Main title on cover page
 #let title = [Assignment Title
 #linebreak()
-Rest of the Title] // Use a list to allow line breaks
+Next Line of the Title] // Use a list to allow line breaks
 // Subtitle on cover page
 #let subtitle = "Assignment subtitle or description"
 // Logo on cover page
@@ -69,6 +69,12 @@ Rest of the Title] // Use a list to allow line breaks
 // Defining header and page numbering (will pagebreak)
 #show: apply-header-footer.with(course-code: course-code, assignment-type: assignment-type)
 
+// Abstract
+#heading(level: 1, numbering: none)[Abstract]
+#lorem(200)
+#pagebreak()
+
+
 // Introduction
 #heading(level: 1, numbering: none)[Introduction]
 #lorem(400)
@@ -112,6 +118,4 @@ This is the
 
 // Appendix
 #pagebreak()
-#show: appendix.with(title: "Appendix")
-= Internship Evaluation Sheet
-Yeah, I got all A's everywhere, so great, I'm a super intern.
+#heading(level: 1, numbering: none)[Appendix]

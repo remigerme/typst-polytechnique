@@ -65,24 +65,21 @@
     }]
   }
 
-  // H3 styling - Modern with bullet
+  // H3 styling - Consistent with other headings
   show heading.where(level: 3): he => {
     box(width: 100%)[#{
-      grid(columns: (auto, 1fr), column-gutter: 8pt, align: left)[
-        #set text(size: 12pt, fill: rgb(0, 93, 166))
-        #text(weight: "bold")[▸]
-      ][
-        #set text(
-          size: 16pt,
-          weight: "medium",
-          fill: rgb(0, 83, 156)
-        )
-        #if type(he.numbering) == str {
-          counter(heading).display(he.numbering)
-          [ • ]
-        }
-        #smallcaps(he.body)
-      ]
+      set par(justify: false)
+      set align(left)
+      set text(
+        size: 16pt,
+        weight: "bold",
+        fill: rgb(0, 93, 166),
+      )
+      if type(he.numbering) == str {
+        counter(heading).display(he.numbering)
+        [ ]
+      }
+      he.body
     }]
   }
 
@@ -102,21 +99,4 @@
   // Don't forget to return doc cause
   // we're in a template
   doc
-}
-
-#let appendix(body, title: "Appendix") = {
-  counter(heading).update(0)
-  // From https://github.com/typst/typst/discussions/3630
-  set heading(
-    numbering: (..nums) => {
-      let vals = nums.pos()
-      let s = ""
-      if vals.len() == 1 {
-        s += title + " "
-      }
-      s += numbering("A.1 -", ..vals)
-      s
-    },
-  )
-  body
 }
