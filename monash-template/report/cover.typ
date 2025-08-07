@@ -71,9 +71,15 @@
         dx: -20pt, dy: -20pt,
         {
           set text(size: 8pt, fill: rgb(150, 150, 150))
-          image("../../assets/typst.png", height: 10pt)
-          h(2pt)
-          link("https://typst.app", "Made with Typst")
+          box(
+            baseline: 0pt,
+            link("https://typst.app", "Made with Typst")
+          )
+          h(3pt)
+          box(
+            baseline: 0pt,
+            image("../../assets/typst.png", height: 10pt)
+          )
         }
       )
     }

@@ -1,9 +1,7 @@
 #import "../template/main.typ": monash-report
 
 #monash-report(
-  [Machine Learning Applications
-#linebreak()
-in Healthcare Systems],
+  [Machine Learning Applications in Healthcare Systems],
   "Alex Johnson",
   subtitle: "A Comprehensive Analysis of Predictive Models and Diagnostic Tools",
   student-id: "12345678",
@@ -58,7 +56,7 @@ The methodology combines systematic literature review with case study analysis, 
 = Literature Review
 
 == Machine Learning in Medical Imaging
-Medical imaging represents one of the most advanced areas of machine learning application in healthcare. Deep learning algorithms, particularly convolutional neural networks (CNNs), have demonstrated remarkable accuracy in detecting and classifying abnormalities in X-rays, CT scans, and MRI images.
+Medical imaging represents one of the most advanced areas of machine learning application in healthcare. Deep learning algorithms, particularly convolutional neural networks (CNNs), have demonstrated remarkable accuracy in detecting and classifying abnormalities in X-rays, CT scans, and MRI images@example-turing.
 
 Recent studies have shown that AI-powered diagnostic tools can match or exceed human radiologist performance in specific tasks, such as detecting diabetic retinopathy from retinal scans or identifying lung nodules in chest X-rays. These advances suggest significant potential for improving diagnostic accuracy and reducing healthcare costs through earlier detection and intervention.
 
@@ -134,8 +132,8 @@ Future research should focus on developing more robust evaluation frameworks, im
 
 // Bibliography
 #pagebreak()
-#heading(level: 1, numbering: none)[Bibliography]
-Topcu, E., & Topcu, M. (2024). *DIATYPST: The Diata Template for Typst*. https://github.com/ericttop/diatypst
+
+#bibliography("../assets/example.bib", style: "ieee")
 
 // Appendix
 #pagebreak()
