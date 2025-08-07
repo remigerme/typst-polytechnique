@@ -1,7 +1,6 @@
 [package]
 name = "monash-university-report"
 version = "0.1.0"
-entrypoint = "template/main.typ"
 authors = ["Eric <@eric>"]
 license = "MIT"
 description = "A professional report template for Monash University students with official brand colors."
