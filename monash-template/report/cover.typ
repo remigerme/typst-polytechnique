@@ -77,7 +77,7 @@
           )
           h(3pt)
           box(
-            baseline: 0pt,
+            baseline: 3pt,
             image("../../assets/typst.png", height: 10pt)
           )
         }
