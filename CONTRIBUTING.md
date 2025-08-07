@@ -2,7 +2,7 @@
 
 You can simply fork this repo and work on it on your own. Feel free to PR if this repo is still active !
 
-If you plan to distribute your version of the package, please make sure you pay respect to both [Typst packages guidelines](https://github.com/typst/packages?tab=readme-ov-file#submission-guidelines) and [École polytechnique corporate identity](https://www.polytechnique.edu/presse/kit-media).
+If you plan to distribute your version of the package, please make sure you pay respect to both [Typst packages guidelines](https://github.com/typst/packages?tab=readme-ov-file#submission-guidelines).
 
 ## Pushing to Typst packages
 
@@ -14,13 +14,13 @@ I personally suggest the following steps :
 - in the root directory, for every `x.y.z` version (if the `main` branch currently contains the `x.y.z` release) :
 
     ```bash
-    git subtree add --prefix=packages/preview/typographix-polytechnique-reports/x.y.z git@github.com:remigerme/typst-polytechnique.git main
+    git subtree add --prefix=packages/preview/monash-university-report/x.y.z git@github.com:eric/typst-report-monash.git main
     ```
 
     You may need to pull sometimes (if the release wasn't fully ready) :
 
     ```bash
-    git subtree pull --prefix=packages/preview/typographix-polytechnique-reports/x.y.z git@github.com:remigerme/typst-polytechnique.git main
+    git subtree pull --prefix=packages/preview/monash-university-report/x.y.z git@github.com:eric/typst-report-monash.git main
     ```
 
 - PR your fork to publish the package.

@@ -1,6 +1,7 @@
-#import "@preview/typographix-polytechnique-reports:0.1.6" as template
+#import "@preview/monash-university-report:0.1.0" as template
 
-#show:  template.apply
+#show: template.apply-page.with(despair-mode: despair-mode)
+#show: template.apply-heading
 
 // Specific rules for the guide
 #show link: set text(blue)
@@ -25,18 +26,39 @@
 }
 
 // Defining variables for the cover page and PDF metadata
-#let title = [Guide for Typst #linebreak() Polytechnique package]
+#let title = [Guide for Typst #linebreak() Monash University package]
 #let subtitle = "A modern alternative to LaTeX"
 #let logo = image("assets/logo-x.svg")
 #let short_title = "package guide"
-#let authors = ("Rémi Germe")
-#let date_start = datetime(year: 2024, month: 07, day: 05)
-#let date_end = datetime(year: 2024, month: 08, day: 05)
+#let author = "Rémi Germe"
+#let student-id = "12345678" // Student ID number
+#let course-code = "FIT3080" // Course code
+#let course-name = "Introduction to Artificial Intelligence" // Course name
+#let assignment-type = "Assignment Report" // Type: Assignment, Essay, Report, Project, etc.
+#let tutor-name = "Dr. T" // Tutor or lecturer name
+#let date = datetime(year: 2025, month: 07, day: 30) // Optional date
+#let word-count = none // Optional word count
+#let show-typst-attribution = true // Set to false to hide "Made with Typst" attribution
 
 #set text(lang: "en")
 
 // Beginning of the content
-#template.cover.cover(title, authors, date_start, date_end, subtitle: subtitle, logo: logo)
+#template.cover.cover(
+  title, 
+  author, 
+  none, // date-start (deprecated)
+  none, // date-end (deprecated)
+  subtitle: subtitle, 
+  logo: logo, 
+  student-id: student-id,
+  course-code: course-code,
+  course-name: course-name,
+  assignment-type: assignment-type,
+  tutor-name: tutor-name,
+  word-count: word-count,
+  date: date,
+  show-typst-attribution: show-typst-attribution
+)
 #pagebreak()
 
 #outline(title: [Guide content], indent: 1em, depth: 2)
@@ -45,7 +67,7 @@
 = Discovering Typst and the template
 
 #typst-rendering(
-  "Typst is a user-friendlier alternative to LaTeX. Check out #link(\"https://github.com/remigerme/typst-polytechnique/blob/main/guide.typ\")[this pdf source] to see how it was generated."
+  "Typst is a user-friendlier alternative to LaTeX. Check out #link(\"https://github.com/eric/typst-report-monash/blob/main/guide.typ\")[this pdf source] to see how it was generated."
 )
 
 == Headings
@@ -64,28 +86,50 @@ Use only one (resp. two) `=` for level 1 (resp. 2) heading (and so on).
 ```typc
 // Defining variables for the cover page and PDF metadata
 // Main title on cover page
-#let title = [Guide for Typst #linebreak() Polytechnique package]
+#let title = [Guide for Typst #linebreak() Monash University package]
 // Subtitle on cover page
 #let subtitle = "A modern alternative to LaTeX"
 // Logo on cover page
 #let logo = none // instead of none set to image("path/to/my-logo.png")
-#let logo-horizontal = true // set to true if the logo is squared or horizontal, set to false if not
 // Short title on headers
 #let short-title = "package guide"
 #let author = "Rémi Germe"
-#let date-start = datetime(year: 2024, month: 06, day: 05)
-#let date-end = datetime(year: 2024, month: 09, day: 05)
+#let student-id = "12345678" // Student ID number
+#let course-code = "FIT3080" // Course code
+#let course-name = "Introduction to Artificial Intelligence" // Course name
+#let assignment-type = "Assignment Report" // Type: Assignment, Essay, Report, Project, etc.
+#let tutor-name = "Dr. T" // Tutor or lecturer name
+#let date = datetime(year: 2025, month: 07, day: 30) // Optional date
+#let word-count = none // Optional word count
 // Set to true for bigger margins and so on (good luck with your report)
 #let despair-mode = false
+// Set to false to hide "Made with Typst" attribution on cover page
+#let show-typst-attribution = true
 
 #set text(lang: "en")
 
 // Set document metadata
 #set document(title: title, author: author, date: datetime.today())
-#show: template.apply.with(despair-mode: despair-mode)
+#show: template.apply-page.with(despair-mode: despair-mode)
+#show: template.apply-heading
 
 // Cover page
-#template.cover.cover(title, author, date-start, date-end, subtitle: subtitle, logo: logo, logo-horizontal: logo-horizontal)
+#template.cover.cover(
+  title, 
+  author, 
+  none, // date-start (deprecated)
+  none, // date-end (deprecated)
+  subtitle: subtitle, 
+  logo: logo, 
+  student-id: student-id,
+  course-code: course-code,
+  course-name: course-name,
+  assignment-type: assignment-type,
+  tutor-name: tutor-name,
+  word-count: word-count,
+  date: date,
+  show-typst-attribution: show-typst-attribution
+)
 #pagebreak()
 ```
 
@@ -113,6 +157,17 @@ For example, the previous table of contents was generated using :
 ```typc
 #outline(title: [Guide content], indent: 1em, depth: 2)
 ```
+
+== Header and Footer
+
+The template automatically includes headers and footers with course information and page numbers. To configure the header and footer, use:
+
+```typc
+// Defining header and page numbering (will pagebreak)
+#show: template.apply-header-footer.with(course-code: course-code, assignment-type: assignment-type)
+```
+
+The header will automatically display the course code and assignment type, while the footer includes decorative elements and page numbers.
 
 == Cite an article
 
@@ -144,7 +199,7 @@ You can generate dummy text with the `#lorem(n)` command. For example : #lower(l
 
 == Contribute
 
-Contributions are welcomed ! Check out the #link("https://github.com/remigerme/typst-polytechnique")[source repository].
+Contributions are welcome! Check out the #link("https://github.com/eric/typst-report-monash")[source repository].
 
 You can also learn more about #link("https://github.com/typst/packages")[Typst packages] release pipeline.
 

@@ -4,7 +4,7 @@
 
 #let apply(doc) = {
     // Numbering parameters
-  set heading(numbering: "1.1 - ")
+  set heading(numbering: "1.1")
 
   // H1 styling - Modern with shadow effect
   show heading.where(level:1): he => {
@@ -18,18 +18,16 @@
           size: 16pt,
           weight: "bold",
           fill: rgb(0, 102, 204),
-          font: "New Computer Modern Sans"
-        )
-        counter(heading).display(he.numbering.slice(0, -3))
+                  )
+        counter(heading).display(he.numbering)
         v(0.3em)
       } else if he.numbering != none {
         set text(
           size: 16pt,
           weight: "bold",
           fill: rgb(0, 102, 204),
-          font: "New Computer Modern Sans"
-        )
-        upper((he.numbering)(he.level).slice(0, -2))
+                  )
+        upper((he.numbering)(he.level))
         v(0.3em)
       }
       
@@ -38,8 +36,7 @@
         size: 24pt,
         weight: "bold",
         fill: rgb(0, 93, 166),
-        font: "New Computer Modern Sans",
-        hyphenate: false
+                hyphenate: false
       )
       upper(he.body)
       
@@ -59,10 +56,9 @@
         size: 18pt,
         weight: "bold",
         fill: rgb(0, 93, 166),
-        font: "New Computer Modern Sans"
-      )
+              )
       if type(he.numbering) == str {
-        counter(heading).display(he.numbering.slice(0, -3))
+        counter(heading).display(he.numbering)
         [ ]
       }
       he.body
@@ -82,7 +78,7 @@
           fill: rgb(0, 83, 156)
         )
         #if type(he.numbering) == str {
-          counter(heading).display(he.numbering.slice(0, -3))
+          counter(heading).display(he.numbering)
           [ • ]
         }
         #smallcaps(he.body)
@@ -122,53 +118,5 @@
       s
     },
   )
-
   body
 }
-
-
-/********************/
-/* TESTING TEMPLATE */
-/********************/
-
-#show: apply
-
-#outline()
-
-= My first section
-
-== A sub-section 
-
-#heading(level: 2, numbering: none)[Sub-section without numbering]
-#lorem(60)
-
-=== No more ideas
-
-==== Sometimes dummy text is
-
-===== Really important
-really ?
-
-==== Back again
-
-#heading(level: 3, numbering: none)[Sub-sub-section without numbering]
-
-=== Guess who's back ?
-
-#lorem(40)
-
-= My second section
-
-#lorem(30)
-
-== Another one
-
-#lorem(20)
-
-#show: appendix.with(title: "Appendix")
-
-= Some proofs
-#lorem(50)
-
-== Some theorem
-#lorem(20)

@@ -18,7 +18,7 @@ Rest of the Title] // Use a list to allow line breaks
 #let course-code = "FIT3080" // Course code
 #let course-name = "Introduction to Artificial Intelligence" // Course name
 #let assignment-type = "Assignment Report" // Type: Assignment, Essay, Report, Project, etc.
-#let tutor-name = "Dr. Smith" // Tutor or lecturer name
+#let tutor-name = "Dr. T" // Tutor or lecturer name
 #let date = datetime(year: 2025, month: 07, day: 30) // Optional date
 #let word-count = none // Optional word count
 // Set to true for bigger margins and so on (good luck with your report)

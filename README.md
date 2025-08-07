@@ -1,8 +1,8 @@
 # Typst Report Template - Monash University Edition
 
-A Typst package for Monash University student reports, adapted from the Polytechnique template with Monash's official brand colors.
+A professional Typst package for Monash University student reports, featuring Monash's official brand colors and modern design elements.
 
-For a short introduction to Typst features and detailed information about the package, check the [guide](https://github.com/remigerme/typst-polytechnique/blob/main/guide.pdf) (available from the repo only).
+For a short introduction to Typst features and detailed information about the package, check the [guide](guide.pdf) (available in the repository).
 
 ## Monash Color Scheme
 
@@ -38,8 +38,23 @@ These variables will be used for PDF metadata, default cover page and default he
 
 ## Contributing
 
-Contributions are welcomed ! See [contribution guidelines](CONTRIBUTING.md).
+Contributions are welcome! See [contribution guidelines](CONTRIBUTING.md).
 
-## Todo
+## Features
 
-- [ ] heading not at the end of a page : might be tricky
+- Professional Monash University branding with official colors
+- Modern cover page with customizable elements
+- Automatic header and footer generation
+- Responsive typography and layout
+- Support for student information, course details, and assignment metadata
+- Optional "Made with Typst" attribution toggle
+
+## Usage
+
+This template is designed for Monash University students creating:
+- Assignment reports
+- Thesis documents
+- Research papers
+- Project documentation
+
+Install and use via Typst package manager or clone the repository for local development.

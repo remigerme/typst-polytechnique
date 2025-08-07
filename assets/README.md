@@ -2,11 +2,11 @@
 
 ## Licensing
 
-Use the assets accordingly with [École polytechnique corporate identity](https://www.polytechnique.edu/en/press-room).
+Use the assets accordingly with [Monash University brand guidelines](https://www.monash.edu/__data/assets/pdf_file/0003/1430493/Monash-Brand-Guidelines.pdf).
 
 ## Generation
 
-Typst currently only supports `svg` integration. I generated `svg` assets using inkscape to convert `eps` files to `svg`, and remplaced colors to use colors from École polytechnique corporate identity.
+Typst currently only supports `svg` integration. I generated `svg` assets using inkscape to convert `eps` files to `svg`, and replaced colors to use colors from Monash University corporate identity.
 
 ```bash
 for f in *.eps; do inkscape --export-type=svg $f; done
