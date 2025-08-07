@@ -61,7 +61,7 @@
     place(
       center + horizon,
       dx: 0pt, dy: -35%,
-      image("assets/Monash University-04.svg", width: 35%)
+      image("../../assets/Monash University-04.svg", width: 35%)
     )
     
     // Typst logo in bottom right corner (conditional)
@@ -71,7 +71,7 @@
         dx: -20pt, dy: -20pt,
         {
           set text(size: 8pt, fill: rgb(150, 150, 150))
-          image("assets/typst.png", height: 10pt)
+          image("../../assets/typst.png", height: 10pt)
           h(2pt)
           link("https://typst.app", "Made with Typst")
         }

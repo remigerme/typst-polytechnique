@@ -53,14 +53,14 @@
           fill: monash-blue, 
           size: 14pt, 
           weight: "medium"
-        )[#header_text])),
-        align(right, image("assets/Monash_University_logo_page.svg", height: 15mm))
+        )[#header-text])),
+        align(right, image("../../assets/Monash_University_logo_page.svg", height: 15mm))
       )
     },
     footer: {
       place(center, {
         // Subtle decorative line above page number
-        box(width: 60pt, height: 0.5pt, fill: monash-blue.with(a: 30%))
+        box(width: 60pt, height: 0.5pt, fill: monash-blue)
         v(3pt)
         
         // Enhanced page number styling

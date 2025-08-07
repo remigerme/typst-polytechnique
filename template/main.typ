@@ -1,6 +1,6 @@
-#import "../cover.typ": cover
-#import "../heading.typ": apply as apply-heading
-#import "../page.typ": apply as apply-page, apply-header-footer
+#import "../monash-template/report/cover.typ": cover
+#import "../monash-template/report/heading.typ": apply as apply-heading
+#import "../monash-template/report/page.typ": apply as apply-page, apply-header-footer
 
 // Defining variables for the cover page and PDF metadata
 // Main title on cover page

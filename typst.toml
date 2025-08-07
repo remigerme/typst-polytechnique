@@ -1,13 +1,14 @@
 [package]
 name = "monash-university-report"
 version = "0.1.0"
-entrypoint = "monash-report.typ"
+entrypoint = "template/main.typ"
 authors = ["Eric <@eric>"]
 license = "MIT"
 description = "A professional report template for Monash University students with official brand colors."
 repository = "https://github.com/eric/typst-report-monash"
-keywords = ["monash", "university", "report", "assignment", "education", "thesis"]
-categories = ["report"]
+keywords = ["monash", "university", "report", "assignment", "education"]
+categories = ["report", "presentation"]
+compiler = "0.12.0"
 exclude = [
     ".gitignore",
     "guide.typ", "guide.pdf",
@@ -16,5 +17,5 @@ exclude = [
 
 [template]
 path = "template"
-entrypoint = "report.typ"
-thumbnail = "report-thumbnail.png"
+entrypoint = "main.typ"
+thumbnail = "assets/typst.png"
