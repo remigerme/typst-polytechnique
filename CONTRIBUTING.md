@@ -1,8 +1,8 @@
 # Contributing to the package or template
 
-You can simply fork this repo and work on it on your own. Feel free to PR if this repo is still active !
+You can simply fork this repo and work on it on your own. Feel free to PR if this repo is still active!
 
-If you plan to distribute your version of the package, please make sure you pay respect to both [Typst packages guidelines](https://github.com/typst/packages?tab=readme-ov-file#submission-guidelines) and [École polytechnique corporate identity](https://www.polytechnique.edu/presse/kit-media).
+If you plan to distribute your version of the package, please make sure you pay respect to both [Typst packages guidelines](https://github.com/typst/packages/blob/main/docs/README.md) and [École polytechnique corporate identity](https://www.polytechnique.edu/presse/kit-media).
 
 ## Pushing to Typst packages
 
@@ -10,19 +10,20 @@ Check out [Typst packages repo](https://github.com/typst/packages) to learn more
 
 I personally suggest the following steps :
 
-- fork the Typst packages repo
-- in the root directory, for every `x.y.z` version (if the `main` branch currently contains the `x.y.z` release) :
+1. fork the Typst packages repo
+2. in the root directory, for every `x.y.z` version (if the current branch currently contains the `x.y.z` release):
 
-    ```bash
-    git subtree add --prefix=packages/preview/typographix-polytechnique-reports/x.y.z git@github.com:remigerme/typst-polytechnique.git main
-    ```
+   ```bash
+   cp -r report path/to/fork/packages/preview/typographix-polytechnique-reports/x.y.z
+   ```
 
-    You may need to pull sometimes (if the release wasn't fully ready) :
+   or
 
-    ```bash
-    git subtree pull --prefix=packages/preview/typographix-polytechnique-reports/x.y.z git@github.com:remigerme/typst-polytechnique.git main
-    ```
+   ```bash
+   cp -r slide path/to/fork/packages/preview/typographix-polytechnique-slides/x.y.z
+   ```
 
-- PR your fork to publish the package.
+   > [!caution]
+   > Make sure not to include files that are gitignored like `.pdf`s or `.DS_Store` for macOS users.
 
-You do not need to squash the commit history at anytime because Typst packages will do it on merge.
+3. PR your fork to publish the package.
