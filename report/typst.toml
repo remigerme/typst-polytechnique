@@ -9,7 +9,6 @@ repository = "https://github.com/remigerme/typst-polytechnique"
 keywords = ["polytechnique", "école polytechnique", "report", "rapport", "stage", "typographix"]
 categories = ["report"]
 exclude = [
-    ".gitignore",
     "guide.typ", "guide.pdf",
     "assets/example.bib", "assets/typst.png",
 ]
