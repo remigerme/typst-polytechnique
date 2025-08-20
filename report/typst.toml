@@ -1,7 +1,7 @@
 [package]
 name = "typographix-polytechnique-reports"
-version = "0.1.6"
-entrypoint = "polytechnique.typ"
+version = "0.2.0"
+entrypoint = "main.typ"
 authors = ["Rémi Germe <@remigerme>"]
 license = "MIT"
 description = "A report template for Polytechnique students (from TypographiX)."

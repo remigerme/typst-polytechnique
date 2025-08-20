@@ -1,10 +1,9 @@
-#import "@preview/typographix-polytechnique-reports:0.1.6" as template
+#import "@preview/typographix-polytechnique-reports:0.2.0" as template
 
 // Defining variables for the cover page and PDF metadata
 // Main title on cover page
-#let title = [Rapport de stage en entreprise
-#linebreak()
-sur plusieurs lignes]
+#let title = [Rapport de stage en entreprise \
+  sur plusieurs lignes]
 // Subtitle on cover page
 #let subtitle = "Un sous-titre pour expliquer ce titre"
 // Logo on cover page
@@ -25,7 +24,15 @@ sur plusieurs lignes]
 #show: template.apply.with(despair-mode: despair-mode)
 
 // Cover page
-#template.cover.cover(title, author, date-start, date-end, subtitle: subtitle, logo: logo, logo-horizontal: logo-horizontal)
+#template.cover(
+  title,
+  author,
+  date-start,
+  date-end,
+  subtitle: subtitle,
+  logo: logo,
+  logo-horizontal: logo-horizontal,
+)
 #pagebreak()
 
 // Acknowledgements
@@ -42,7 +49,7 @@ sur plusieurs lignes]
 #outline(title: [Template contents], indent: 1em, depth: 2)
 
 // Defining header and page numbering (will pagebreak)
-#show: template.page.apply-header-footer.with(short-title: short-title)
+#show: template.apply-header-footer.with(short-title: short-title)
 
 // Introduction
 #heading(level: 1, numbering: none)[Introduction]
@@ -53,7 +60,7 @@ sur plusieurs lignes]
 = Premier titre
 
 == Un sous-titre
- 
+
 #lorem(30)
 
 === Un détail pas si inutile
@@ -101,6 +108,6 @@ Parce qu'on a beaucoup de choses à dire et qu'on en a gros.
 
 // Annexe
 #pagebreak()
-#show: template.heading.appendix.with(title: "Annexe")
+#show: template.appendix.with(title: "Annexe")
 = Fiche d'évaluation du stagiaire
 Yeah j'ai eu que des A partout trop bien, je suis un.e super stagiaire.
