@@ -1,12 +1,12 @@
-# Typst Polytechnique package
+# Typst Polytechnique report template
 
-A Typst package for Polytechnique student reports.
+A Typst template for Polytechnique student reports.
 
-For a short introduction to Typst features and detailled information about the package, check the [guide](https://github.com/remigerme/typst-polytechnique/blob/main/guide.pdf) (available from the repo only).
+For a short introduction to Typst features and detailled information about the package, check the [guide](guide.pdf) (available from the repo only).
 
 ## Usage
 
-If you want to use it on local, make sure you have the font "New Computer Modern Sans" installed.
+If you want to use the template locally, make sure you have the font "New Computer Modern Sans" installed.
 
 Define variables at the top of the template :
 
@@ -25,11 +25,3 @@ Define variables at the top of the template :
 ```
 
 These variables will be used for PDF metadata, default cover page and default header.
-
-## Contributing
-
-Contributions are welcomed ! See [contribution guidelines](CONTRIBUTING.md).
-
-## Todo
-
-- [ ] heading not at the end of a page : might be tricky
