@@ -10,7 +10,7 @@ If you want to use the template locally, make sure you have the font "New Comput
 
 Define variables at the top of the template :
 
-```typc
+```typ
 #let title = "Rapport de stage en entreprise sur plusieurs lignes automatiquement"
 #let subtitle = "Un sous-titre pour expliquer ce titre"
 #let logo = image("path/to/my-logo.png")
