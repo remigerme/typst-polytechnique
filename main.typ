@@ -130,6 +130,12 @@
   doc
 }
 
+#let armes(doc) = {
+  place(center + horizon, dy: 14%, image("assets/armes.svg"))
+
+  doc
+}
+
 #show: apply.with(ratio: 16 / 9, h1-theme: "dark")
 
 = Introduction
@@ -143,3 +149,13 @@
 #lorem(100)
 
 == Nan vraiment
+
+Attention, le texte avant est en-dessous des armes.
+
+#show: armes
+
+Le texte après pas de souci. #lorem(50)
+
+== Alors, ça donne quoi
+
+Petit test pour voir
