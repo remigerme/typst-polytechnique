@@ -6,7 +6,7 @@
 )
 #let PALETTE-AUX = ()
 
-#let MARGIN = 5.9mm
+#let MARGIN = 6mm
 #let HEIGHT = 19.05cm
 #let WIDTH = 16 / 9 * HEIGHT
 
@@ -49,7 +49,7 @@
   /********/
   /* PAGE */
   /********/
-  set page(width: WIDTH, height: HEIGHT, background: [
+  set page(width: WIDTH, height: HEIGHT, margin: MARGIN, background: [
     #show-bg-lines()
     #rect(
       stroke: 0.2mm + PALETTE.at("gold"),
@@ -78,9 +78,14 @@
   let h2-text-color = PALETTE.at("gold")
   show heading.where(level: 2): he => {
     pagebreak(weak: true)
-    // TODO spacing between fancy edge and heading == spacing heading and filet-long
-    align(center, text(size: FONT-SIZES.at(0), fill: h2-text-color, he.body)) // TODO numbering?
-    align(center, image("assets/filet-long.svg", width: FILET-LONG-SIZE))
+
+    place(center, dy: 3.22cm, image("assets/filet-long.svg", width: FILET-LONG-SIZE))
+
+    block(height: 3.22cm, width: 100%, align(center + horizon, text(
+      size: FONT-SIZES.at(0),
+      fill: h2-text-color,
+      he.body,
+    ))) // TODO numbering?
   }
 
   doc
