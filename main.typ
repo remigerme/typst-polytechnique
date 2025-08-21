@@ -65,7 +65,6 @@
   /********/
   /* PAGE */
   /********/
-  // TODO x and bottom margins
   set page(
     width: WIDTH,
     height: HEIGHT,
@@ -77,6 +76,7 @@
   /* GENERAL STYLE */
   /*****************/
   set text(font: "Georgia", fill: PALETTE.blue, size: FONT-SIZES.at(1))
+  set heading(numbering: "I")
 
   /***********/
   /* HEADING */
@@ -90,8 +90,12 @@
       margin: 0cm,
       background: page-background(is-light: h1-use-light-theme, dark-frame: h1-dark-frame),
     )
-    place(center + horizon, text(size: 400pt, fill: h1-number-color, he.numbering)) // TODO numbering?
-    align(center + horizon, text(size: 66pt, fill: h1-text-color, he.body))
+    place(center + horizon, text(
+      size: 400pt,
+      fill: h1-number-color,
+      counter(heading).display(he.numbering),
+    ))
+    align(center + horizon, text(size: 66pt, fill: h1-text-color, weight: "bold", he.body))
   }
 
   let h2-text-color = PALETTE.gold
@@ -103,8 +107,9 @@
     block(height: 3.22cm, width: 100%, align(center + horizon, text(
       size: FONT-SIZES.at(0),
       fill: h2-text-color,
+      weight: "regular",
       he.body,
-    ))) // TODO numbering?
+    )))
 
     v(1cm)
   }
@@ -112,11 +117,9 @@
   doc
 }
 
-#set heading(numbering: "1")
-
 #show: apply.with(h1-theme: "dark")
 
-= Branchez-vous
+= Introduction
 
 == Complètement dingo
 
@@ -124,6 +127,6 @@
 - En trois points
 - semcom j'ai validé
 
-#lorem(200)
+#lorem(100)
 
 == Nan vraiment
