@@ -69,7 +69,7 @@
   set page(
     width: WIDTH,
     height: HEIGHT,
-    margin: (x: MARGIN-FRAME, y: MARGIN-FRAME),
+    margin: (top: MARGIN-FRAME, rest: 2.30cm),
     background: page-background(is-light: true),
   )
 
