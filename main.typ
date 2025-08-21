@@ -4,9 +4,9 @@
   "lighter-blue": rgb("#006881"),
   "gray": rgb("#E7E6E6"),
 )
-#let PALETTE-AUX = ()
+#let PALETTE-AUX = () // TODO
 
-#let MARGIN = 6mm
+#let MARGIN-FRAME = 6mm
 #let HEIGHT = 19.05cm
 #let WIDTH = 16 / 9 * HEIGHT
 
@@ -33,49 +33,68 @@
       angle: -45deg,
       start: (sx, sy),
       length: overall-hyp,
-      stroke: PALETTE.at("gold") + DIAG-LINE-SIZE,
+      stroke: PALETTE.gold + DIAG-LINE-SIZE,
     ))
   }
+}
+
+#let page-background(is-light: bool, dark-frame: false) = {
+  if dark-frame {
+    place(rect(width: 100%, height: 100%, fill: PALETTE.blue))
+  }
+  show-bg-lines()
+  rect(
+    stroke: 0.2mm + PALETTE.gold,
+    width: WIDTH - 2 * MARGIN-FRAME,
+    height: HEIGHT - 2 * MARGIN-FRAME,
+    fill: if is-light { white } else { PALETTE.blue },
+  )
 }
 
 #let apply(doc, h1-theme: "light") = {
   /***********/
   /* PARSING */
   /***********/
-  let h1-use-light-theme = if h1-theme == "light" { true } else if h1-theme == "dark" {
+  let h1-use-light-theme = if h1-theme == "light" { true } else if (
+    h1-theme == "dark" or h1-theme == "dark-full"
+  ) {
     false
   } else { panic("Unexpected value for param 'h1-theme', expected 'light' or 'dark'") }
+  let h1-dark-frame = h1-theme == "dark-full"
 
   /********/
   /* PAGE */
   /********/
-  set page(width: WIDTH, height: HEIGHT, margin: MARGIN, background: [
-    #show-bg-lines()
-    #rect(
-      stroke: 0.2mm + PALETTE.at("gold"),
-      width: WIDTH - 2 * MARGIN,
-      height: HEIGHT - 2 * MARGIN,
-      fill: white,
-    )])
+  // TODO x and bottom margins
+  set page(
+    width: WIDTH,
+    height: HEIGHT,
+    margin: (x: MARGIN-FRAME, y: MARGIN-FRAME),
+    background: page-background(is-light: true),
+  )
 
   /*****************/
   /* GENERAL STYLE */
   /*****************/
-  set text(font: "Georgia", fill: PALETTE.at("blue"), size: FONT-SIZES.at(1))
+  set text(font: "Georgia", fill: PALETTE.blue, size: FONT-SIZES.at(1))
 
   /***********/
   /* HEADING */
   /***********/
-  let h1-bg-color = if h1-use-light-theme { white } else { PALETTE.at("blue") }
-  let h1-text-color = if h1-use-light-theme { PALETTE.at("blue") } else { white }
+  let h1-text-color = if h1-use-light-theme { PALETTE.blue } else { white }
   let h1-number-color = if h1-use-light-theme { rgb("#E3DDC9") } else { rgb("#4C788C") }
   show heading.where(level: 1): he => {
-    set page(header: none, footer: none, margin: 0cm, fill: h1-bg-color)
+    set page(
+      header: none,
+      footer: none,
+      margin: 0cm,
+      background: page-background(is-light: h1-use-light-theme, dark-frame: h1-dark-frame),
+    )
     place(center + horizon, text(size: 400pt, fill: h1-number-color, he.numbering)) // TODO numbering?
     align(center + horizon, text(size: 66pt, fill: h1-text-color, he.body))
   }
 
-  let h2-text-color = PALETTE.at("gold")
+  let h2-text-color = PALETTE.gold
   show heading.where(level: 2): he => {
     pagebreak(weak: true)
 
@@ -86,6 +105,8 @@
       fill: h2-text-color,
       he.body,
     ))) // TODO numbering?
+
+    v(1cm)
   }
 
   doc
@@ -93,7 +114,7 @@
 
 #set heading(numbering: "1")
 
-#show: apply
+#show: apply.with(h1-theme: "dark")
 
 = Branchez-vous
 
