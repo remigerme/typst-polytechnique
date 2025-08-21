@@ -15,6 +15,8 @@
 #let FILET-LONG-SIZE-OUTLINE = 6.4cm
 
 #let DIAG-LINE-SIZE = 0.1mm
+#let LENGTH-BETWEEN-FRAME-AND-FILET = 3.22cm
+#let SPACING-AFTER-TITLE = 1cm
 
 #let show-bg-lines(width, height) = {
   // We could simplify the expressions below because tan(45deg) = 1
@@ -50,6 +52,30 @@
   )
 }
 
+// Using the same trick as Diatypst
+#let header-page() = context {
+  let page = here().page()
+  let headings = query(selector(heading.where(level: 2)))
+  let heading = headings.rev().find(x => x.location().page() <= page)
+
+  if heading != none {
+    block(height: LENGTH-BETWEEN-FRAME-AND-FILET, width: 100%, align(center + horizon, text(
+      size: FONT-SIZES.at(0),
+      fill: PALETTE.gold,
+      weight: "regular",
+      {
+        heading.body
+        [ ]
+        if heading.location().page() != page {
+          numbering("(i)", page - heading.location().page() + 1)
+        }
+      },
+    )))
+    place(center, image("assets/filet-long.svg", width: FILET-LONG-SIZE))
+    v(SPACING-AFTER-TITLE)
+  }
+}
+
 #let apply(doc, ratio: 16 / 9, h1-theme: "light", frame-theme: "light") = {
   /***********/
   /* PARSING */
@@ -80,7 +106,10 @@
   set page(
     width: width,
     height: height,
-    margin: (top: MARGIN-FRAME, rest: 2.30cm),
+    margin: (
+      top: MARGIN-FRAME + LENGTH-BETWEEN-FRAME-AND-FILET + SPACING-AFTER-TITLE,
+      rest: 2.30cm,
+    ),
     background: page-background(width, height, dark-frame: slide-dark-frame),
     footer: place(dx: width - 2.30cm - MARGIN-FRAME - 1.5em, text(
       fill: PALETTE.gold,
@@ -88,6 +117,8 @@
         page,
       ).display("1"),
     )),
+    header: box(width: 100%, height: 100%, header-page()),
+    header-ascent: 0pt,
   )
 
   /*****************/
@@ -124,24 +155,13 @@
   let h2-text-color = PALETTE.gold
   show heading.where(level: 2): he => {
     pagebreak(weak: true)
-
-    place(center, dy: 3.22cm, image("assets/filet-long.svg", width: FILET-LONG-SIZE))
-
-    block(height: 3.22cm, width: 100%, align(center + horizon, text(
-      size: FONT-SIZES.at(0),
-      fill: h2-text-color,
-      weight: "regular",
-      he.body,
-    )))
-
-    v(1cm)
   }
 
   doc
 }
 
 #let armes(doc) = {
-  place(center + horizon, dy: 14%, image("assets/armes.svg"))
+  place(center + horizon, dy: 6%, image("assets/armes.svg"))
 
   doc
 }
@@ -167,5 +187,7 @@ Attention, le texte avant est en-dessous des armes.
 Le texte après pas de souci. #lorem(50)
 
 == Alors, ça donne quoi
+
+#show: armes
 
 Petit test pour voir

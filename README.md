@@ -17,11 +17,11 @@ A Typst template for Polytechnique student oral presentations.
 - [ ] template
   - [ ] options
   - [ ] typst demo
-- [ ] page
+- [x] page
   - [x] allow for 4/3
   - [x] check spacing
   - [x] fancy stuff on the edges
-  - [ ] one slide on multiple pages
+  - [x] one slide on multiple pages
   - [x] numbering pages
 - [x] headings
   - [x] think about numbering in for h1/h2
