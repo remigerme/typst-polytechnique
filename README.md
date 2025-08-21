@@ -13,11 +13,11 @@ A Typst template for Polytechnique student oral presentations.
 - [ ] page
   - [ ] allow for 4/3
   - [ ] check spacing
-  - [ ] fancy stuff on the edges
+  - [x] fancy stuff on the edges
 - [ ] headings
   - [ ] think about numbering in for h1/h2
   - [x] h1
-  - [ ] h2
+  - [x] h2
     - [x] style
     - [x] assets
-    - [ ] check spacing
+    - [x] check spacing
