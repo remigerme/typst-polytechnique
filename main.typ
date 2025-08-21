@@ -6,10 +6,35 @@
 )
 #let PALETTE-AUX = ()
 
+#let MARGIN = 5.9mm
+#let HEIGHT = 19.05cm
+#let WIDTH = 16 / 9 * HEIGHT
+
 #let FONT-SIZES = (24pt, 18pt, 12pt, 10pt, 10pt)
 
 #let FILET-LONG-SIZE = 6.58cm
 #let FILET-LONG-SIZE-OUTLINE = 6.4cm
+
+#let DIAG-LINE-SIZE = 0.1mm
+
+#let show-bg-lines() = {
+  // We could simplify the expressions below because tan(45deg) = 1
+  // But in case anyone wonders how did I come up with that...
+  let width-small = HEIGHT / calc.tan(45deg)
+  let overall-width = WIDTH + width-small
+  let overall-height = calc.tan(45deg) * overall-width
+  let overall-hyp = overall-height / calc.sin(45deg)
+  let max-height = calc.ceil(overall-height.mm())
+
+  for i in range(0, max-height, step: 2) {
+    place(line(
+      angle: -45deg,
+      start: (0mm, i * 1mm),
+      length: overall-hyp,
+      stroke: PALETTE.at("gold") + DIAG-LINE-SIZE,
+    ))
+  }
+}
 
 #let apply(doc, h1-theme: "light") = {
   /***********/
@@ -22,7 +47,14 @@
   /********/
   /* PAGE */
   /********/
-  set page(width: 16 / 9 * 19.05cm, height: 19.05cm)
+  set page(width: WIDTH, height: HEIGHT, background: [
+    #show-bg-lines()
+    #rect(
+      stroke: 0.2mm + PALETTE.at("gold"),
+      width: WIDTH - 2 * MARGIN,
+      height: HEIGHT - 2 * MARGIN,
+      fill: white,
+    )])
 
   /*****************/
   /* GENERAL STYLE */
