@@ -15,7 +15,7 @@ A Typst template for Polytechnique student oral presentations.
   - [ ] different styles
 - [ ] outline
 - [ ] page
-  - [ ] allow for 4/3
+  - [x] allow for 4/3
   - [x] check spacing
   - [x] fancy stuff on the edges
   - [ ] one slide on multiple pages
