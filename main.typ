@@ -27,9 +27,11 @@
   let max-height = calc.ceil(overall-height.mm())
 
   for i in range(0, max-height, step: 2) {
+    let sx = if i * 1mm < HEIGHT { 0mm } else { (i - HEIGHT.mm()) * calc.tan(45deg) * 1mm }
+    let sy = calc.min(i * 1mm, HEIGHT)
     place(line(
       angle: -45deg,
-      start: (0mm, i * 1mm),
+      start: (sx, sy),
       length: overall-hyp,
       stroke: PALETTE.at("gold") + DIAG-LINE-SIZE,
     ))
