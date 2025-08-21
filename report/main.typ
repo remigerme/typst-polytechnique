@@ -21,12 +21,9 @@
 
 // Applying margins and other page-related setup
 #let apply-page(doc, despair-mode: false) = {
-  set page(
-    paper: "a4",
-    margin: if (despair-mode) { margin-despair-mode } else { margin-default },
-  )
-
+  set page(paper: "a4", margin: if (despair-mode) { margin-despair-mode } else { margin-default })
   set par(justify: true, first-line-indent: 20pt)
+
   doc
 }
 
@@ -127,11 +124,7 @@
   logo-horizontal: true,
 ) = {
   set page(background: move(dx: 0pt, dy: -13%, image("assets/armes.svg")))
-  set text(font: "New Computer Modern Sans", hyphenate: false, fill: rgb(
-    1,
-    66,
-    106,
-  ))
+  set text(font: "New Computer Modern Sans", hyphenate: false, fill: rgb(1, 66, 106))
   set align(center)
 
   v(1.8fr)
@@ -174,10 +167,7 @@
       logo, image(path-logo-x),
     )
   } else {
-    grid(
-      columns: 1fr, align: center + horizon,
-      image(path-logo-x)
-    )
+    grid(columns: 1fr, align: center + horizon, image(path-logo-x))
   }
 }
 
