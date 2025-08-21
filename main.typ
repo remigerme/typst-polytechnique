@@ -50,23 +50,27 @@
   )
 }
 
-#let apply(doc, ratio: 16 / 9, h1-theme: "light") = {
+#let apply(doc, ratio: 16 / 9, h1-theme: "light", frame-theme: "light") = {
   /***********/
   /* PARSING */
   /***********/
-  let h1-use-light-theme = if h1-theme == "light" { true } else if (
-    h1-theme == "dark" or h1-theme == "dark-full"
-  ) {
-    false
-  } else {
-    panic("Unexpected value for param 'h1-theme', expected 'light', 'dark', or 'dark-full'")
+  let H1-THEMES = ("light", "light-dark", "dark-light", "dark")
+  if not H1-THEMES.contains(h1-theme) {
+    panic(
+      "Unexpected value for param 'h1-theme', expected one of the following: 'light', 'light-dark' (light with dark frame), 'dark-light' (dark with light frame), 'dark'",
+    )
   }
-  let h1-dark-frame = h1-theme == "dark-full"
+  let h1-use-light-theme = h1-theme == "light" or h1-theme == "light-dark"
+  let h1-dark-frame = h1-theme == "light-dark" or h1-theme == "dark"
+
+  if frame-theme != "light" and frame-theme != "dark" {
+    panic("Unexpected value for param 'frame-theme', expected 'light' or 'dark'")
+  }
+  let slide-dark-frame = frame-theme == "dark"
 
   if type(ratio) != float {
     panic("Unexpected value for param 'ratio', expected a float")
   }
-
   let height = BASE-HEIGHT
   let width = ratio * height
 
@@ -77,7 +81,7 @@
     width: width,
     height: height,
     margin: (top: MARGIN-FRAME, rest: 2.30cm),
-    background: page-background(width, height),
+    background: page-background(width, height, dark-frame: slide-dark-frame),
     footer: place(dx: width - 2.30cm - MARGIN-FRAME - 1.5em, text(
       fill: PALETTE.gold,
       context counter(
@@ -142,7 +146,7 @@
   doc
 }
 
-#show: apply.with(ratio: 16 / 9, h1-theme: "dark")
+#show: apply.with(ratio: 16 / 9, h1-theme: "dark-light")
 
 = Introduction
 
@@ -152,7 +156,7 @@
 - En trois points
 - semcom j'ai validé
 
-#lorem(100)
+#lorem(500)
 
 == Nan vraiment
 
