@@ -7,8 +7,7 @@
 #let PALETTE-AUX = () // TODO
 
 #let MARGIN-FRAME = 6mm
-#let HEIGHT = 19.05cm
-#let WIDTH = 16 / 9 * HEIGHT
+#let BASE-HEIGHT = 19.05cm
 
 #let FONT-SIZES = (24pt, 18pt, 12pt, 10pt, 10pt)
 
@@ -17,18 +16,18 @@
 
 #let DIAG-LINE-SIZE = 0.1mm
 
-#let show-bg-lines() = {
+#let show-bg-lines(width, height) = {
   // We could simplify the expressions below because tan(45deg) = 1
   // But in case anyone wonders how did I come up with that...
-  let width-small = HEIGHT / calc.tan(45deg)
-  let overall-width = WIDTH + width-small
+  let width-small = height / calc.tan(45deg)
+  let overall-width = width + width-small
   let overall-height = calc.tan(45deg) * overall-width
   let overall-hyp = overall-height / calc.sin(45deg)
   let max-height = calc.ceil(overall-height.mm())
 
   for i in range(0, max-height, step: 2) {
-    let sx = if i * 1mm < HEIGHT { 0mm } else { (i - HEIGHT.mm()) * calc.tan(45deg) * 1mm }
-    let sy = calc.min(i * 1mm, HEIGHT)
+    let sx = if i * 1mm < height { 0mm } else { (i - height.mm()) * calc.tan(45deg) * 1mm }
+    let sy = calc.min(i * 1mm, height)
     place(line(
       angle: -45deg,
       start: (sx, sy),
@@ -38,20 +37,20 @@
   }
 }
 
-#let page-background(is-light: bool, dark-frame: false) = {
+#let page-background(width, height, is-light: true, dark-frame: false) = {
   if dark-frame {
     place(rect(width: 100%, height: 100%, fill: PALETTE.blue))
   }
-  show-bg-lines()
+  show-bg-lines(width, height)
   rect(
     stroke: 0.2mm + PALETTE.gold,
-    width: WIDTH - 2 * MARGIN-FRAME,
-    height: HEIGHT - 2 * MARGIN-FRAME,
+    width: width - 2 * MARGIN-FRAME,
+    height: height - 2 * MARGIN-FRAME,
     fill: if is-light { white } else { PALETTE.blue },
   )
 }
 
-#let apply(doc, h1-theme: "light") = {
+#let apply(doc, ratio: 16 / 9, h1-theme: "light") = {
   /***********/
   /* PARSING */
   /***********/
@@ -59,17 +58,26 @@
     h1-theme == "dark" or h1-theme == "dark-full"
   ) {
     false
-  } else { panic("Unexpected value for param 'h1-theme', expected 'light' or 'dark'") }
+  } else {
+    panic("Unexpected value for param 'h1-theme', expected 'light', 'dark', or 'dark-full'")
+  }
   let h1-dark-frame = h1-theme == "dark-full"
+
+  if type(ratio) != float {
+    panic("Unexpected value for param 'ratio', expected a float")
+  }
+
+  let height = BASE-HEIGHT
+  let width = ratio * height
 
   /********/
   /* PAGE */
   /********/
   set page(
-    width: WIDTH,
-    height: HEIGHT,
+    width: width,
+    height: height,
     margin: (top: MARGIN-FRAME, rest: 2.30cm),
-    background: page-background(is-light: true),
+    background: page-background(width, height),
   )
 
   /*****************/
@@ -88,7 +96,12 @@
       header: none,
       footer: none,
       margin: 0cm,
-      background: page-background(is-light: h1-use-light-theme, dark-frame: h1-dark-frame),
+      background: page-background(
+        width,
+        height,
+        is-light: h1-use-light-theme,
+        dark-frame: h1-dark-frame,
+      ),
     )
     place(center + horizon, text(
       size: 400pt,
@@ -117,7 +130,7 @@
   doc
 }
 
-#show: apply.with(h1-theme: "dark")
+#show: apply.with(ratio: 16 / 9, h1-theme: "dark")
 
 = Introduction
 
