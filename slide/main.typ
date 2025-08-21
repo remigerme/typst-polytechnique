@@ -78,6 +78,12 @@
     height: height,
     margin: (top: MARGIN-FRAME, rest: 2.30cm),
     background: page-background(width, height),
+    footer: place(dx: width - 2.30cm - MARGIN-FRAME - 1.5em, text(
+      fill: PALETTE.gold,
+      context counter(
+        page,
+      ).display("1"),
+    )),
   )
 
   /*****************/
