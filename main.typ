@@ -248,38 +248,3 @@
 
   doc
 }
-
-#show: apply.with(ratio: 16 / 9, h1-theme: "light")
-#cover(title: "Soutenance de stage", speaker: "Rémi Germe", date: "22/08/2025")
-= Introduction
-
-#outline(title: "Sommaire")
-== Complètement dingo
-
-- Woah on va vraiment se régaler.
-- En trois points
-- semcom j'ai validé
-
-#lorem(500)
-
-== Nan vraiment
-
-Attention, le texte avant est en-dessous des armes.
-
-#show: armes
-
-Le texte après pas de souci. #lorem(50)
-
-== Alors, ça donne quoi
-
-#show: armes
-
-Petit test pour voir
-
-= Un autre titre
-
-= more
-
-= titles
-
-= Coucou les reufs
