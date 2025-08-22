@@ -1,4 +1,4 @@
-#import "../main.typ" as template
+#import "@preview/typographix-polytechnique-slides:0.1.0" as template
 
 /// Available options:
 /// - ratio: a float, typically 16/9 or 4/3
@@ -68,4 +68,3 @@ Un espace vertical pour aérer le tout. Et maintenant une grille avec deux élé
 #align(center + horizon, text(size: 40pt, "Waouh on a bien bossé."))
 
 #align(center, text(fill: template.PALETTE.gold, "Merci de votre attention."))
-
