@@ -76,6 +76,16 @@
   }
 }
 
+#let render-item-outline(he) = {
+  [
+    #numbering(he.numbering, counter(heading).at(he.location()).first()) \
+    #text(size: FONT-SIZES.at(0), he.body)
+    #image("assets/filet-long.svg")
+    p. #he.location().page()
+  ]
+}
+
+
 #let apply(doc, ratio: 16 / 9, h1-theme: "light", frame-theme: "light") = {
   /***********/
   /* PARSING */
@@ -128,6 +138,41 @@
   set heading(numbering: "I")
 
   /***********/
+  /* OUTLINE */
+  /***********/
+  set outline(depth: 1)
+  show outline: o => {
+    let headings = query(heading.where(level: 1))
+    let nb-heading = headings.len()
+    if nb-heading < 2 or nb-heading > 6 {
+      set heading(level: 2)
+      o
+    } else {
+      let nb-elem-first-row = if nb-heading in (2, 4) { 2 } else { 3 }
+      let nb-elem-snd-row = nb-heading - nb-elem-first-row
+
+      [== #o.title]
+
+      box(height: 100%, align(horizon, {
+        grid(
+          align: center + horizon,
+          columns: (1fr,) * nb-elem-first-row,
+          ..headings.map(render-item-outline).slice(0, count: nb-elem-first-row),
+        )
+
+        if nb-elem-snd-row > 0 {
+          // TODO special case for nb-heading == 5
+          grid(
+            align: center + horizon,
+            columns: (1fr,) * nb-elem-snd-row,
+            ..headings.map(render-item-outline).slice(nb-elem-first-row, count: nb-elem-snd-row)
+          )
+        }
+      }))
+    }
+  }
+
+  /***********/
   /* HEADING */
   /***********/
   let h1-text-color = if h1-use-light-theme { PALETTE.blue } else { white }
@@ -167,9 +212,9 @@
 }
 
 #show: apply.with(ratio: 16 / 9, h1-theme: "dark-light")
-
 = Introduction
 
+#outline(title: "Sommaire")
 == Complètement dingo
 
 - Woah on va vraiment se régaler.
@@ -191,3 +236,11 @@ Le texte après pas de souci. #lorem(50)
 #show: armes
 
 Petit test pour voir
+
+= Un autre titre
+
+= more
+
+= titles
+
+= Coucou les reufs
