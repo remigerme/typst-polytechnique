@@ -17,7 +17,20 @@ The template can by applied while specifying the following settings:
 
 ### Cover page
 
-TODO
+You can generate a cover page using the `#template.cover` command. It takes the following arguments:
+
+- `title`
+- `speaker`
+- `date`
+- `background-image`: this should be an image object, with `width: 100%, height: 100%` like `image("path/to/custom/image.png", width: 100%, height: 100%)` (default: a photo of the lake and Grand Boncourt).
+
+Example:
+
+```typ
+#cover(title: "Soutenance de stage", speaker: "Big BRother", date: "22/08/2025")
+```
+
+![Cover preview](slide-thumbnail.png)
 
 ### Outline
 
@@ -69,36 +82,3 @@ The template exposes the color palette.
 |                        `PALETTE.blue`                        |                        `PALETTE.gold`                        |                        `PALETTE.gray`                        |                        `PALETTE.lighter-blue`                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------------------------------------------: |
 | ![Blue color preview](https://placehold.co/20/003E5D/003E5D) | ![Gold color preview](https://placehold.co/20/A58B4D/A58B4D) | ![Gray color preview](https://placehold.co/20/E7E6E6/E7E6E6) | ![Lighter blue color preview](https://placehold.co/20/006881/006881) |
-
-## Todo
-
-- [ ] thumbnail `slide-thumbnail.png`
-- [ ] README
-  - [ ] settings overview
-  - [x] 4 themes h1
-  - [x] 2 themes frame
-  - [x] palettes
-- [ ] fonts (Georgia, Century Gothic): think about it -> set default (careful size ! Merriweather? Linus Libertine?)
-- [ ] cover
-  - [ ] assets
-  - [ ] different styles
-- [x] outline
-- [ ] template
-  - [ ] options
-  - [ ] typst demo
-- [x] page
-  - [x] allow for 4/3
-  - [x] check spacing
-  - [x] fancy stuff on the edges
-  - [x] one slide on multiple pages
-  - [x] numbering pages
-- [x] headings
-  - [x] think about numbering in for h1/h2
-  - [x] h1
-    - [x] weight? -> majority of bold
-    - [x] move numbering to the bottom? or mid slide (current)? or mid text? -> mid text with roman numeral
-  - [x] h2
-    - [x] style
-    - [x] assets
-    - [x] check spacing
-    - [x] weight? -> majority of regular
