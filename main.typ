@@ -150,25 +150,39 @@
     } else {
       let nb-elem-first-row = if nb-heading in (2, 4) { 2 } else { 3 }
       let nb-elem-snd-row = nb-heading - nb-elem-first-row
+      let rows = if nb-elem-snd-row > 0 { (1fr, 1fr) } else { auto }
 
       [== #o.title]
 
-      box(height: 100%, align(horizon, {
+      v(SPACING-AFTER-TITLE)
+
+      block(height: 100% - SPACING-AFTER-TITLE, align(center + horizon, grid(
+        rows: rows,
+        align: horizon,
         grid(
           align: center + horizon,
           columns: (1fr,) * nb-elem-first-row,
           ..headings.map(render-item-outline).slice(0, count: nb-elem-first-row),
-        )
+        ),
 
         if nb-elem-snd-row > 0 {
-          // TODO special case for nb-heading == 5
+          // Special case for nb-heading == 5
+          let columns = if nb-heading != 5 { (1fr,) * nb-elem-snd-row } else {
+            (0.5fr, 1fr, 1fr, 0.5fr)
+          }
+          let res = headings
+            .map(render-item-outline)
+            .slice(nb-elem-first-row, count: nb-elem-snd-row)
+          if nb-heading == 5 {
+            res.insert(0, [])
+          }
           grid(
             align: center + horizon,
-            columns: (1fr,) * nb-elem-snd-row,
-            ..headings.map(render-item-outline).slice(nb-elem-first-row, count: nb-elem-snd-row)
+            columns: columns,
+            ..res
           )
-        }
-      }))
+        },
+      )))
     }
   }
 
