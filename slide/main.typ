@@ -86,7 +86,7 @@
 }
 
 
-#let apply(doc, ratio: 16 / 9, h1-theme: "light", frame-theme: "light") = {
+#let apply(doc, ratio: 16 / 9, h1-theme: "dark-light", frame-theme: "light") = {
   /***********/
   /* PARSING */
   /***********/
@@ -219,13 +219,38 @@
   doc
 }
 
+#let cover(title: none, speaker: none, date: none, background-image: none) = {
+  let bg-image = if background-image != none { background-image } else {
+    image("assets/boncourt.jpg", width: 100%)
+  }
+  set page(footer: none)
+  set page(background: {
+    place(block(width: 100%, height: 100%, bg-image))
+    rect(fill: PALETTE.blue.transparentize(30%), width: 100%, height: 100%)
+  })
+  set page(margin: (top: 2.10cm, left: 1.40cm, bottom: 0.8cm))
+
+  image("assets/logo-x-ip-paris.svg", height: 3.22cm)
+
+  grid(
+    columns: 1,
+    rows: (1fr, 1.5em, 1fr),
+    align(horizon, block(width: 80%, text(fill: white, size: 2 * FONT-SIZES.at(0), title))),
+    line(length: 3cm, stroke: PALETTE.gold + 1pt),
+    text(fill: PALETTE.gold, size: FONT-SIZES.at(1), speaker),
+  )
+
+  place(bottom, text(fill: white, size: FONT-SIZES.at(2), date))
+}
+
 #let armes(doc) = {
   place(center + horizon, dy: 6%, image("assets/armes.svg"))
 
   doc
 }
 
-#show: apply.with(ratio: 16 / 9, h1-theme: "dark-light")
+#show: apply.with(ratio: 16 / 9, h1-theme: "light")
+#cover(title: "Soutenance de stage", speaker: "Rémi Germe", date: "22/08/2025")
 = Introduction
 
 #outline(title: "Sommaire")
