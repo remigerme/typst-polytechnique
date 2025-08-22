@@ -8,7 +8,7 @@ description = "A presentation slide template for Polytechnique students (from Ty
 repository = "https://github.com/remigerme/typst-polytechnique"
 keywords = ["polytechnique", "école polytechnique", "slide", "présentation", "oral", "stage", "typographix"]
 categories = ["presentation"]
-exclude = []
+exclude = [ "/gallery/*" ]
 
 [template]
 path = "template"
