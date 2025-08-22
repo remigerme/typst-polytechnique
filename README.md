@@ -7,9 +7,44 @@ A Typst template for Polytechnique student oral presentations.
 
 ## Settings overview
 
-TODO
+The template can by applied while specifying the following settings:
+
+- `frame-theme`: "light" or "dark" (default: "light")
+- `h1-theme`: "light", "ligh-dark", "dark-light" or "dark" (default: "dark-light")
+- `ratio`: a float (default: 16 / 9)
 
 ## Features
+
+### Cover page
+
+TODO
+
+### Outline
+
+You can generate a fancy table of contents using the classic `#outline` command:
+
+```typ
+#outline(title: "Sommaire")
+```
+
+This will generate one of the outline pages below, according to the number of sections you have. Note that if you have less than two sections, or strictly more than six sections, the outline will default on a classic table of contents.
+
+|                           Two sections                            |                            Three sections                             |                            Four sections                            |                            Five sections                            |                           Six sections                            |
+| :---------------------------------------------------------------: | :-------------------------------------------------------------------: | :-----------------------------------------------------------------: | :-----------------------------------------------------------------: | :---------------------------------------------------------------: |
+| ![Preview of outline with two sections](gallery/two-sections.png) | ![Preview of outline with three sections](gallery/three-sections.png) | ![Preview of outline with four sections](gallery/four-sections.png) | ![Preview of outline with five sections](gallery/five-sections.png) | ![Preview of outline with six sections](gallery/six-sections.png) |
+
+### Logo in background
+
+If you want to display the "armes" of Polytechnique in the background of a slide, use `#show: template.armes` **right after the slide title**.
+
+```typ
+== A slide with armes
+#show: template.armes
+
+#lorem(100)
+```
+
+![Armes preview](gallery/with-armes.png)
 
 ### Section titles
 
