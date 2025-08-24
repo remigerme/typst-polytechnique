@@ -4,6 +4,15 @@ You can simply fork this repo and work on it on your own. Feel free to PR if thi
 
 If you plan to distribute your version of the package, please make sure you pay respect to both [Typst packages guidelines](https://github.com/typst/packages/blob/main/docs/README.md) and [École polytechnique corporate identity](https://www.polytechnique.edu/presse/kit-media).
 
+## Formatting
+
+Internal Typst code (_i.e._ everything the final user of the templates won't see) should be formatted with [typstyle](https://github.com/typstyle-rs/typstyle) with a maximum line width of 100.
+
+A CI job is checking the formatting of the following files:
+
+- `report/main.typ`
+- `slide/main.typ`
+
 ## Pushing to Typst packages
 
 Check out [Typst packages repo](https://github.com/typst/packages) to learn more about packages release pipeline.
