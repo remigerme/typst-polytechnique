@@ -1,6 +1,6 @@
 [package]
 name = "typographix-polytechnique-slides"
-version = "0.1.0"
+version = "0.2.0"
 entrypoint = "main.typ"
 authors = ["Rémi Germe <@remigerme>"]
 license = "MIT"
