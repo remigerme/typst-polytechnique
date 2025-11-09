@@ -65,9 +65,12 @@ Un espace vertical pour aérer le tout. Et maintenant une grille avec deux élé
 
 = CHARGEZ
 
-== Un titre vraiment long \ pour lequel on a beaucoup \ de choses à dire
-
-Et du contenu.
+== Un titre vraiment long \ sur plusieurs lignes
+// Quick fix dégueu pour les titres sur plusieurs lignes : il faut réinsérer de l'espace à la main.
+// Pour que l'espacement entre le contenu et le filet soit le même que pour les autres slides,
+// il faut mettre un espacement de 65pt / 2 * (n-1) où n est le nombre total de lignes du titre.
+#v(65pt / 2)
+Mon dieu, qu'ai-je fait ?
 
 == Conclusion
 
