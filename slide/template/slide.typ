@@ -17,11 +17,13 @@
 /// - title
 /// - speaker
 /// - date
-/// - background-image: should `image("path/to/image.png", width: 100%, height: 100%)`
+/// - theme: "light" or "dark"
+/// - background-image: should be `image("path/to/image.png", width: 100%, height: 100%)` if provided
 #template.cover(
   title: "Soutenance de stage",
   speaker: "Rémi Germe",
   date: "22/08/2025",
+  theme: "dark",
 )
 
 

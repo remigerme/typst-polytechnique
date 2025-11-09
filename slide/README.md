@@ -32,6 +32,14 @@ Example:
 
 ![Cover preview](slide-thumbnail.png)
 
+You might also use the light theme:
+
+```typ
+#cover(title: "Soutenance de stage", speaker: "Big BRother", date: "22/08/2025", theme: "light")
+```
+
+![Cover light preview](gallery/cover-light.png)
+
 ### Outline
 
 You can generate a fancy table of contents using the classic `#outline` command:

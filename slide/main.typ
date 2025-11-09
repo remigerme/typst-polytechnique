@@ -219,28 +219,65 @@
   doc
 }
 
-#let cover(title: none, speaker: none, date: none, background-image: none) = {
-  let bg-image = if background-image != none { background-image } else {
-    image("assets/boncourt.jpg", width: 100%)
+#let DEFAULT-COVER-IMAGE-LIGHT = "assets/logements.jpg"
+#let DEFAULT-COVER-IMAGE-DARK = "assets/boncourt.jpg"
+
+#let cover(title: none, speaker: none, date: none, background-image: none, theme: "dark") = {
+  let THEMES = ("dark", "light")
+  if not THEMES.contains(theme) {
+    panic("Unexpected value for param 'theme', expected one of the following: 'light', 'dark'")
   }
+  let light-theme = theme == "light"
+
+  let params-light = (
+    "bg-image": if background-image != none { background-image } else { DEFAULT-COVER-IMAGE-LIGHT },
+    "bg-fill": gradient.linear(
+      (rgb(100%, 100%, 100%, 100%), 0%),
+      (rgb(100%, 100%, 100%, 100%), 10%),
+      (rgb(100%, 100%, 100%, 80%), 40%),
+      (rgb(100%, 100%, 100%, 20%), 100%),
+    ),
+    "logo-x-ipp": "assets/logo-x-ip-paris-blue.svg",
+    "font-fill-title": PALETTE.blue,
+    "line-stroke": PALETTE.blue,
+    "font-fill-speaker": PALETTE.blue,
+    "font-fill-date": PALETTE.blue,
+  )
+
+  let params-dark = (
+    "bg-image": if background-image != none { background-image } else { DEFAULT-COVER-IMAGE-DARK },
+    "bg-fill": PALETTE.blue.transparentize(30%),
+    "logo-x-ipp": "assets/logo-x-ip-paris-white.svg",
+    "font-fill-title": white,
+    "line-stroke": PALETTE.gold,
+    "font-fill-speaker": PALETTE.gold,
+    "font-fill-date": white,
+  )
+
+  let params = if light-theme { params-light } else { params-dark }
+
   set page(footer: none)
   set page(background: {
-    place(block(width: 100%, height: 100%, bg-image))
-    rect(fill: PALETTE.blue.transparentize(30%), width: 100%, height: 100%)
+    place(block(width: 100%, height: 100%, image(params.at("bg-image"), width: 100%)))
+    rect(fill: params.at("bg-fill"), width: 100%, height: 100%)
   })
   set page(margin: (top: 2.10cm, left: 1.40cm, bottom: 0.8cm))
 
-  image("assets/logo-x-ip-paris.svg", height: 3.22cm)
+  image(params.at("logo-x-ipp"), height: 3.22cm)
 
   grid(
     columns: 1,
     rows: (1fr, 1.5em, 1fr),
-    align(horizon, block(width: 80%, text(fill: white, size: 2 * FONT-SIZES.at(0), title))),
-    line(length: 3cm, stroke: PALETTE.gold + 1pt),
-    text(fill: PALETTE.gold, size: FONT-SIZES.at(1), speaker),
+    align(horizon, block(width: 80%, text(
+      fill: params.at("font-fill-title"),
+      size: 2 * FONT-SIZES.at(0),
+      title,
+    ))),
+    line(length: 3cm, stroke: params.at("line-stroke") + 1pt),
+    text(fill: params.at("font-fill-speaker"), size: FONT-SIZES.at(1), speaker),
   )
 
-  place(bottom, text(fill: white, size: FONT-SIZES.at(2), date))
+  place(bottom, text(fill: params.at("font-fill-date"), size: FONT-SIZES.at(2), date))
 }
 
 #let armes(doc) = {
