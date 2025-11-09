@@ -1,4 +1,4 @@
-#import "@preview/typographix-polytechnique-slides:0.1.0" as template
+#import "@preview/typographix-polytechnique-slides:0.2.0" as template
 
 /// Available options:
 /// - ratio: a float, typically 16/9 or 4/3
@@ -64,6 +64,10 @@ Un espace vertical pour aérer le tout. Et maintenant une grille avec deux élé
 )
 
 = CHARGEZ
+
+== Un titre vraiment long \ pour lequel on a beaucoup \ de choses à dire
+
+Et du contenu.
 
 == Conclusion
 

@@ -59,19 +59,28 @@
   let heading = headings.rev().find(x => x.location().page() <= page)
 
   if heading != none {
-    block(height: LENGTH-BETWEEN-FRAME-AND-FILET, width: 100%, align(center + horizon, text(
-      size: FONT-SIZES.at(0),
-      fill: PALETTE.gold,
-      weight: "regular",
+    align(
+      center + top,
       {
-        heading.body
-        [ ]
-        if heading.location().page() != page {
-          numbering("(i)", page - heading.location().page() + 1)
-        }
+        v(LENGTH-BETWEEN-FRAME-AND-FILET / 2 - 0.5em)
+        text(
+          size: FONT-SIZES.at(0),
+          fill: PALETTE.gold,
+          weight: "regular",
+          {
+            heading.body
+            [ ]
+            if heading.location().page() != page {
+              numbering("(i)", page - heading.location().page() + 1)
+            }
+          },
+        )
+        place(center, dy: LENGTH-BETWEEN-FRAME-AND-FILET / 2 - 0.5em, image(
+          "assets/filet-long.svg",
+          width: FILET-LONG-SIZE,
+        ))
       },
-    )))
-    place(center, image("assets/filet-long.svg", width: FILET-LONG-SIZE))
+    )
     v(SPACING-AFTER-TITLE)
   }
 }
