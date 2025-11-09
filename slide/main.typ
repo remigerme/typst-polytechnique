@@ -7,6 +7,7 @@
 #let PALETTE-AUX = () // TODO
 
 #let MARGIN-FRAME = 6mm
+#let FRAME-STROKE-THICKNESS = 0.2mm
 #let BASE-HEIGHT = 19.05cm
 
 #let FONT-SIZES = (24pt, 18pt, 12pt, 10pt, 10pt)
@@ -45,7 +46,7 @@
   }
   show-bg-lines(width, height)
   rect(
-    stroke: 0.2mm + PALETTE.gold,
+    stroke: FRAME-STROKE-THICKNESS + PALETTE.gold,
     width: width - 2 * MARGIN-FRAME,
     height: height - 2 * MARGIN-FRAME,
     fill: if is-light { white } else { PALETTE.blue },
@@ -62,7 +63,7 @@
     align(
       center + top,
       {
-        v(LENGTH-BETWEEN-FRAME-AND-FILET / 2 - 0.5em)
+        v(LENGTH-BETWEEN-FRAME-AND-FILET / 2 - 0.5em + MARGIN-FRAME + FRAME-STROKE-THICKNESS)
         text(
           size: FONT-SIZES.at(0),
           fill: PALETTE.gold,
