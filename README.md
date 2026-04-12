@@ -1,33 +1,28 @@
-# Typst Packages for Polytechnique
+# Typst Polytechnique report template
 
-This repo contains two separate Typst packages:
+A Typst template for Polytechnique student reports.
 
-- a [report](report/README.md) template (equivalent to the $\LaTeX$ template provided by [TypographiX](https://typographix.binets.fr/))
-- a [slide](slide/README.md) template (using assets from the PowerPoint template)
+For a short introduction to Typst features and detailled information about the package, check the [guide](guide.pdf) (available from the repo only).
 
-## Use
+## Usage
 
-You can use the templates on the [Typst web app](https://typst.app/). No need to install anything, simply choose "Start from template" when creating a new project.
+If you want to use the template locally, make sure you have the font "New Computer Modern Sans" installed.
 
-## Use locally
+Define variables at the top of the template :
 
-If you prefer to use the templates locally, it is completely possible and super easy too:
+```typ
+#let title = "Rapport de stage en entreprise sur plusieurs lignes automatiquement"
+#let subtitle = "Un sous-titre pour expliquer ce titre"
+#let logo = image("path/to/my-logo.png")
+#let logo-horizontal = true
+#let short-title = "Rapport de stage"
+#let authors = ("Rémi Germe")
+#let date-start = datetime(year: 2024, month: 06, day: 05)
+#let date-end = datetime(year: 2024, month: 09, day: 05)
+#let despair-mode = false
+#let first-line-indent-all = auto
 
-1. Install [Typst](https://github.com/typst/typst?tab=readme-ov-file#installation).
-2. Initialize a new project with the template (the latest versions might be newer than the ones below):
+#set text(lang: "fr")
+```
 
-   ```bash
-   typst init @preview/typographix-polytechnique-reports:0.1.6
-   ```
-
-   or
-
-   ```bash
-   typst init @preview/typographix-polytechnique-slides:0.1.0
-   ```
-
-If you are using VS Code, I strongly recommend using the [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) extension (providing linting, autocompletion, preview, formatting, ...).
-
-## Contributing
-
-Contributions are welcomed! See the [contribution guidelines](CONTRIBUTING.md).
+These variables will be used for PDF metadata, default cover page and default header.
