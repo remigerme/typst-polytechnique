@@ -22,7 +22,7 @@
 // Applying margins and other page-related setup
 #let apply-page(doc, despair-mode: false) = {
   set page(paper: "a4", margin: if (despair-mode) { margin-despair-mode } else { margin-default })
-  set par(justify: true, first-line-indent: 20pt)
+  set par(justify: true, first-line-indent: (amount: 20pt, all: true))
 
   doc
 }
