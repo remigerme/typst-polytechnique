@@ -1,4 +1,4 @@
-#import "@preview/typographix-polytechnique-reports:0.2.0" as template
+#import "@preview/typographix-polytechnique-reports:0.2.1" as template
 
 #show: template.apply
 
