@@ -179,10 +179,13 @@
   // Numbering parameters
   set heading(numbering: "1.1 ")
 
+  // For some reason, `below: auto` need to be reinserted explicitely for blocks for H1, H2, H3
+  // otherwise spacing below is not inserted although `below: auto` is supposedly the default already
+
   // H1 styling
   show heading.where(level: 1): he => {
     set align(center)
-    block(width: 85%, {
+    block(width: 85%, below: auto, {
       set par(justify: false)
       set text(
         size: 20pt,
@@ -206,7 +209,7 @@
 
   // H2 styling
   show heading.where(level: 2): he => {
-    block(text(
+    block(below: auto, text(
       size: 20pt,
       weight: "medium",
       fill: rgb("00677F"),
@@ -220,7 +223,7 @@
 
   // H3 styling
   show heading.where(level: 3): he => {
-    block(text(
+    block(below: auto, text(
       size: 16pt,
       weight: "regular",
       fill: rgb("01426A"),
