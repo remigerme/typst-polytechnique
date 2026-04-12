@@ -177,7 +177,7 @@
 
 #let apply-heading(doc) = {
   // Numbering parameters
-  set heading(numbering: "1.1 - ")
+  set heading(numbering: "1.1 ")
 
   // H1 styling
   show heading.where(level: 1): he => {
@@ -195,7 +195,7 @@
         counter(heading).display(he.numbering.slice(0, -3))
         linebreak()
       } else if he.numbering != none {
-        upper((he.numbering)(he.level).slice(0, -2))
+        upper((he.numbering)(he.level).slice(0, -1))
         linebreak()
       }
       upper(he.body)
@@ -226,7 +226,7 @@
       fill: rgb("01426A"),
     )
     if type(he.numbering) == str {
-      counter(heading).display(he.numbering.slice(0, -3))
+      counter(heading).display(he.numbering.slice(0, -1))
       [ • ]
     }
 
@@ -261,7 +261,7 @@
       if vals.len() == 1 {
         s += title + " "
       }
-      s += numbering("A.1 -", ..vals)
+      s += numbering("A.1 ", ..vals)
       s
     },
   )
