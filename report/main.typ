@@ -242,7 +242,6 @@
     ))
   }
 
-
   // Don't forget to return doc cause
   // we're in a template
   doc
