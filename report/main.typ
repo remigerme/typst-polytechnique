@@ -20,9 +20,13 @@
 )
 
 // Applying margins and other page-related setup
-#let apply-page(doc, despair-mode: false) = {
+#let apply-page(doc, despair-mode: false, first-line-indent-all: auto) = context {
   set page(paper: "a4", margin: if (despair-mode) { margin-despair-mode } else { margin-default })
-  set par(justify: true, first-line-indent: (amount: 20pt, all: true))
+
+  let first-line-indent-all = if first-line-indent-all == auto {
+    if text.lang == "fr" { true } else { false }
+  } else { first-line-indent-all }
+  set par(justify: true, first-line-indent: (amount: 20pt, all: first-line-indent-all))
 
   doc
 }
@@ -228,8 +232,10 @@
       weight: "regular",
       fill: rgb("01426A"),
       {
-        counter(heading).display(he.numbering).slice(0, -1)
-        [ • ]
+        if he.numbering != none {
+          counter(heading).display(he.numbering).slice(0, -1)
+          [ • ]
+        }
 
         smallcaps(he.body)
       },
@@ -284,8 +290,8 @@
 /* MAIN */
 /********/
 
-#let apply(doc, despair-mode: false) = {
-  show: apply-page.with(despair-mode: despair-mode)
+#let apply(doc, despair-mode: false, first-line-indent-all: auto) = {
+  show: apply-page.with(despair-mode: despair-mode, first-line-indent-all: first-line-indent-all)
   show: apply-heading
   show: apply-outline
   doc

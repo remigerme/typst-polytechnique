@@ -16,12 +16,13 @@
 #let date-end = datetime(year: 2024, month: 09, day: 05)
 // Set to true for bigger margins and so on (good luck with your report)
 #let despair-mode = false
+#let first-line-indent-all = auto
 
 #set text(lang: "fr")
 
 // Set document metadata
 #set document(title: title, author: author, date: datetime.today())
-#show: template.apply.with(despair-mode: despair-mode)
+#show: template.apply.with(despair-mode: despair-mode, first-line-indent-all: first-line-indent-all)
 
 // Cover page
 #template.cover(

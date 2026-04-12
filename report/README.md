@@ -20,6 +20,7 @@ Define variables at the top of the template :
 #let date-start = datetime(year: 2024, month: 06, day: 05)
 #let date-end = datetime(year: 2024, month: 09, day: 05)
 #let despair-mode = false
+#let first-line-indent-all = auto
 
 #set text(lang: "fr")
 ```
