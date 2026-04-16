@@ -37,10 +37,10 @@
 #let title = [Guide for Typst #linebreak() Polytechnique package]
 #let subtitle = "A modern alternative to LaTeX"
 #let logo = image("assets/logo-x.svg")
-#let short_title = "package guide"
+#let short-title = "package guide"
 #let authors = "Rémi Germe"
-#let date_start = datetime(year: 2024, month: 07, day: 05)
-#let date_end = datetime(year: 2024, month: 08, day: 05)
+#let date-start = datetime(year: 2024, month: 07, day: 05)
+#let date-end = datetime(year: 2024, month: 08, day: 05)
 
 #set text(lang: "en")
 
@@ -48,8 +48,8 @@
 #template.cover(
   title,
   authors,
-  date_start,
-  date_end,
+  date-start,
+  date-end,
   subtitle: subtitle,
   logo: logo,
 )

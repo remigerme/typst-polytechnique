@@ -57,7 +57,7 @@
 /* COVER */
 /*********/
 
-#let translate_month(month) = {
+#let translate-month(month) = {
   // Construction mapping for months
   let t = (:)
   let fr-month-s = (
@@ -97,8 +97,8 @@
   }
 
   // Translating month
-  let fr_month = t.at(month)
-  fr_month
+  let fr-month = t.at(month)
+  fr-month
 }
 
 #let display-date(date, short-month) = {
@@ -109,7 +109,7 @@
 
     // Translate if necessary
     if text.lang == "fr" {
-      month = translate_month(month)
+      month = translate-month(month)
     }
 
     // Returns month and year
